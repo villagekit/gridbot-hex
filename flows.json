@@ -1,0 +1,2608 @@
+[
+    {
+        "id": "b994d15a.89c23",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": true,
+        "info": ""
+    },
+    {
+        "id": "1b260dec.8a96b2",
+        "type": "tab",
+        "label": "PWM test",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9faa23df.d8c0e",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "69b525da.af416c",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "7c907dfc.4bf934",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "69b525da.af416c",
+        "order": 1,
+        "disp": true,
+        "width": "7",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a2e8354f5f4d08c2",
+        "type": "ui_group",
+        "name": "Frequency Control",
+        "tab": "e03a7482684c9009",
+        "order": 1,
+        "disp": true,
+        "width": "9",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e03a7482684c9009",
+        "type": "ui_tab",
+        "name": "Machine Control",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "7e53de19.e3db6",
+        "type": "exec",
+        "z": "b994d15a.89c23",
+        "command": "relay-exp ",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Execute Relay Control ",
+        "x": 1940,
+        "y": 680,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "f7c1a3bf.66a4c",
+        "type": "change",
+        "z": "b994d15a.89c23",
+        "name": "Turn Relay 1 ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Relay1_ON",
+                "pt": "flow",
+                "to": "true",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1 1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1370,
+        "y": 740,
+        "wires": [
+            [
+                "59d083e0.70e55c"
+            ]
+        ]
+    },
+    {
+        "id": "184b6a4b.2ece06",
+        "type": "inject",
+        "z": "b994d15a.89c23",
+        "name": "DOWN (RELAY 1) Trigger",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "DOWN",
+        "payloadType": "str",
+        "x": 370,
+        "y": 800,
+        "wires": [
+            [
+                "7b204ac4.5d2974"
+            ]
+        ]
+    },
+    {
+        "id": "5e672164.7cd78",
+        "type": "switch",
+        "z": "b994d15a.89c23",
+        "name": "Relay 1 ON?",
+        "property": "Relay1_ON",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 1150,
+        "y": 760,
+        "wires": [
+            [
+                "f7c1a3bf.66a4c"
+            ],
+            [
+                "b6c055e2.21bb38"
+            ]
+        ]
+    },
+    {
+        "id": "b6c055e2.21bb38",
+        "type": "change",
+        "z": "b994d15a.89c23",
+        "name": "Turn Relay 1 OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Relay1_ON",
+                "pt": "flow",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1 0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1370,
+        "y": 780,
+        "wires": [
+            [
+                "7e53de19.e3db6"
+            ]
+        ]
+    },
+    {
+        "id": "f5d7d1.a4b8783",
+        "type": "delay",
+        "z": "b994d15a.89c23",
+        "name": "close relay after delay",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 880,
+        "y": 760,
+        "wires": [
+            [
+                "7a27fdb7.4235a4"
+            ]
+        ]
+    },
+    {
+        "id": "59d083e0.70e55c",
+        "type": "switch",
+        "z": "b994d15a.89c23",
+        "name": "check relay 0 is off",
+        "property": "Relay0_ON",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1530,
+        "y": 680,
+        "wires": [
+            [],
+            [
+                "7e53de19.e3db6"
+            ]
+        ]
+    },
+    {
+        "id": "1821eb84.f275a4",
+        "type": "change",
+        "z": "b994d15a.89c23",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Relay1_ON",
+                "pt": "flow",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "77f0363a.b673a8",
+        "type": "change",
+        "z": "b994d15a.89c23",
+        "name": "Button LOCKED",
+        "rules": [
+            {
+                "t": "set",
+                "p": "DOWN_STATUS",
+                "pt": "flow",
+                "to": "locked",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "down button locked",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 880,
+        "y": 860,
+        "wires": [
+            [
+                "5e672164.7cd78",
+                "b0ed5ba1.b28ef8"
+            ]
+        ]
+    },
+    {
+        "id": "7b204ac4.5d2974",
+        "type": "switch",
+        "z": "b994d15a.89c23",
+        "name": "ignore re-pressing",
+        "property": "DOWN_STATUS",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "locked",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "locked",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 610,
+        "y": 800,
+        "wires": [
+            [],
+            [
+                "f5d7d1.a4b8783",
+                "77f0363a.b673a8"
+            ]
+        ]
+    },
+    {
+        "id": "7a27fdb7.4235a4",
+        "type": "change",
+        "z": "b994d15a.89c23",
+        "name": "Button UNLOCKED",
+        "rules": [
+            {
+                "t": "set",
+                "p": "DOWN_STATUS",
+                "pt": "flow",
+                "to": "unlocked",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "down button unlocked",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 820,
+        "wires": [
+            [
+                "5e672164.7cd78",
+                "56119893.28dbd8"
+            ]
+        ]
+    },
+    {
+        "id": "9533b6.86eafc48",
+        "type": "inject",
+        "z": "b994d15a.89c23",
+        "name": "relay1 off",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "test",
+        "payloadType": "str",
+        "x": 360,
+        "y": 940,
+        "wires": [
+            [
+                "1821eb84.f275a4"
+            ]
+        ]
+    },
+    {
+        "id": "67d190e7.ef9c7",
+        "type": "change",
+        "z": "b994d15a.89c23",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Relay0_ON",
+                "pt": "flow",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a7acc076.3711",
+        "type": "inject",
+        "z": "b994d15a.89c23",
+        "name": "relay 0 off",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "test",
+        "payloadType": "str",
+        "x": 360,
+        "y": 1000,
+        "wires": [
+            [
+                "67d190e7.ef9c7"
+            ]
+        ]
+    },
+    {
+        "id": "47415055.76855",
+        "type": "change",
+        "z": "b994d15a.89c23",
+        "name": "Turn Relay 0 ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Relay0_ON",
+                "pt": "flow",
+                "to": "true",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0 1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1350,
+        "y": 580,
+        "wires": [
+            [
+                "d6ad81a4.6bcdb"
+            ]
+        ]
+    },
+    {
+        "id": "cb975ba4.8b8448",
+        "type": "inject",
+        "z": "b994d15a.89c23",
+        "name": "UP (RELAY 0) Trigger",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "UP",
+        "payloadType": "str",
+        "x": 380,
+        "y": 560,
+        "wires": [
+            [
+                "b97ef811.4818c8"
+            ]
+        ]
+    },
+    {
+        "id": "8517a213.fec7d",
+        "type": "switch",
+        "z": "b994d15a.89c23",
+        "name": "Relay 0 ON?",
+        "property": "Relay0_ON",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 1110,
+        "y": 600,
+        "wires": [
+            [
+                "47415055.76855"
+            ],
+            [
+                "ed977d46.41afa"
+            ]
+        ]
+    },
+    {
+        "id": "ed977d46.41afa",
+        "type": "change",
+        "z": "b994d15a.89c23",
+        "name": "Turn Relay 0 OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Relay0_ON",
+                "pt": "flow",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0 0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1350,
+        "y": 620,
+        "wires": [
+            [
+                "7e53de19.e3db6"
+            ]
+        ]
+    },
+    {
+        "id": "e91bc303.4d349",
+        "type": "delay",
+        "z": "b994d15a.89c23",
+        "name": "close relay after delay",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 880,
+        "y": 520,
+        "wires": [
+            [
+                "9b66788a.faa3a8"
+            ]
+        ]
+    },
+    {
+        "id": "d6ad81a4.6bcdb",
+        "type": "switch",
+        "z": "b994d15a.89c23",
+        "name": "check relay 1 is off",
+        "property": "Relay1_ON",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1570,
+        "y": 580,
+        "wires": [
+            [],
+            [
+                "7e53de19.e3db6"
+            ]
+        ]
+    },
+    {
+        "id": "6753eab2.641c04",
+        "type": "change",
+        "z": "b994d15a.89c23",
+        "name": "Button LOCKED",
+        "rules": [
+            {
+                "t": "set",
+                "p": "UP_STATUS",
+                "pt": "flow",
+                "to": "locked",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "up button locked",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 880,
+        "y": 620,
+        "wires": [
+            [
+                "8517a213.fec7d",
+                "b690fd4d.0f1a9"
+            ]
+        ]
+    },
+    {
+        "id": "b97ef811.4818c8",
+        "type": "switch",
+        "z": "b994d15a.89c23",
+        "name": "ignore re-pressing",
+        "property": "UP_STATUS",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "locked",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "locked",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 610,
+        "y": 560,
+        "wires": [
+            [],
+            [
+                "e91bc303.4d349",
+                "6753eab2.641c04"
+            ]
+        ]
+    },
+    {
+        "id": "9b66788a.faa3a8",
+        "type": "change",
+        "z": "b994d15a.89c23",
+        "name": "Button UNLOCKED",
+        "rules": [
+            {
+                "t": "set",
+                "p": "UP_STATUS",
+                "pt": "flow",
+                "to": "unlocked",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "up button unlocked",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 580,
+        "wires": [
+            [
+                "8517a213.fec7d",
+                "56119893.28dbd8"
+            ]
+        ]
+    },
+    {
+        "id": "60b7aa76.1949b4",
+        "type": "exec",
+        "z": "b994d15a.89c23",
+        "command": "omega2-ctrl gpiomux set uart2 pwm23",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Inititalize Status LED",
+        "x": 1540,
+        "y": 120,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "56119893.28dbd8",
+        "type": "exec",
+        "z": "b994d15a.89c23",
+        "command": "echo -en '\\x00\\xff\\x00' > /dev/ledchain2",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Set LED GREEN",
+        "x": 1150,
+        "y": 680,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "b690fd4d.0f1a9",
+        "type": "exec",
+        "z": "b994d15a.89c23",
+        "command": "echo -en '\\xff\\x00\\x00' > /dev/ledchain2",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Set LED RED",
+        "x": 1160,
+        "y": 500,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "b0ed5ba1.b28ef8",
+        "type": "exec",
+        "z": "b994d15a.89c23",
+        "command": "echo -en '\\x00\\x00\\xff' > /dev/ledchain2",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Set LED BLUE",
+        "x": 1180,
+        "y": 900,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "e7b1acec833325e4",
+        "type": "ui_text",
+        "z": "f6f2187d.f17ca8",
+        "group": "a2e8354f5f4d08c2",
+        "order": 1,
+        "width": "3",
+        "height": "1",
+        "name": "",
+        "label": "Output Frequency",
+        "format": "{{msg.payload}} Hz",
+        "layout": "col-center",
+        "x": 1710,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "156a6fbccbced086",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "a2e8354f5f4d08c2",
+        "order": 3,
+        "width": "6",
+        "height": "6",
+        "label": "Chart of Frequency",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "awaiting info",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "10000",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1690,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dda8590916f9bbe6",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Hz",
+                "pt": "flow",
+                "to": "payload.frequency",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.frequency",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 480,
+        "wires": [
+            [
+                "9cad47714389c0f9"
+            ]
+        ]
+    },
+    {
+        "id": "487e17c5b3667b17",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Hz",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 620,
+        "wires": [
+            [
+                "e7b1acec833325e4"
+            ]
+        ]
+    },
+    {
+        "id": "a95f389e4fcba57b",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Inject Target Speed once per second",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hz",
+        "payloadType": "flow",
+        "x": 870,
+        "y": 160,
+        "wires": [
+            [
+                "9fcce6f09dd2f976",
+                "b94a928419405d46"
+            ]
+        ]
+    },
+    {
+        "id": "ddc2164df922d23c",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "toggle",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "control",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "Hz",
+                "pt": "flow",
+                "to": "0",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "rampSpeedOut",
+                "pt": "flow",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 740,
+        "wires": [
+            [
+                "c426ad04a33038eb"
+            ]
+        ]
+    },
+    {
+        "id": "9fcce6f09dd2f976",
+        "type": "switch",
+        "z": "f6f2187d.f17ca8",
+        "name": "If RampSpeedOut equals TargetSpeed",
+        "property": "rampSpeedOut",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Hz",
+                "vt": "flow"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1170,
+        "y": 300,
+        "wires": [
+            [
+                "c7b1d770dbd3a86a"
+            ]
+        ]
+    },
+    {
+        "id": "0808fed903f488a9",
+        "type": "switch",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 710,
+        "y": 780,
+        "wires": [
+            [
+                "ddc2164df922d23c",
+                "43c317e70ae70d66"
+            ],
+            [
+                "ddc2164df922d23c",
+                "9673d3f409aa6964"
+            ]
+        ]
+    },
+    {
+        "id": "43c317e70ae70d66",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 860,
+        "wires": [
+            [
+                "9cad47714389c0f9",
+                "0639653aaa3fdb19"
+            ]
+        ]
+    },
+    {
+        "id": "9673d3f409aa6964",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "ON ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 820,
+        "wires": [
+            [
+                "9cad47714389c0f9",
+                "0639653aaa3fdb19"
+            ]
+        ]
+    },
+    {
+        "id": "0639653aaa3fdb19",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "rampSpeedOut",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1210,
+        "y": 400,
+        "wires": [
+            [
+                "affb929390427c58"
+            ]
+        ]
+    },
+    {
+        "id": "b94a928419405d46",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "Target Frequency",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "msg",
+        "x": 1430,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "c7b1d770dbd3a86a",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1490,
+        "y": 360,
+        "wires": [
+            [
+                "156a6fbccbced086",
+                "61b96216.48614c"
+            ]
+        ]
+    },
+    {
+        "id": "affb929390427c58",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "Ramp Freq",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "msg",
+        "x": 1450,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "61b96216.48614c",
+        "type": "exec",
+        "z": "f6f2187d.f17ca8",
+        "command": "onion pwm 0 50",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "true",
+        "timer": "4",
+        "oldrc": false,
+        "name": "",
+        "x": 1760,
+        "y": 300,
+        "wires": [
+            [
+                "337e7d92.8e2f82"
+            ],
+            [
+                "96b66ff9.85da9"
+            ],
+            [
+                "59466fe1.add34"
+            ]
+        ]
+    },
+    {
+        "id": "337e7d92.8e2f82",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1970,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "59466fe1.add34",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1960,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "96b66ff9.85da9",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1970,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "a2e93146.8a9e9",
+        "type": "ui_button",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "7c907dfc.4bf934",
+        "order": 4,
+        "width": "3",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 0 ON",
+        "tooltip": "",
+        "color": "white",
+        "bgcolor": "red",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1110,
+        "y": 920,
+        "wires": [
+            [
+                "174e5996.2e2726"
+            ]
+        ]
+    },
+    {
+        "id": "7f05bcff.803004",
+        "type": "ui_button",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "a2e8354f5f4d08c2",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Relay 1 On",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 850,
+        "y": 940,
+        "wires": [
+            [
+                "356168bb.201278"
+            ]
+        ]
+    },
+    {
+        "id": "174e5996.2e2726",
+        "type": "exec",
+        "z": "f6f2187d.f17ca8",
+        "command": "relay-exp 0 1",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 1300,
+        "y": 940,
+        "wires": [
+            [
+                "1d9061d2.eb82ae"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "356168bb.201278",
+        "type": "exec",
+        "z": "f6f2187d.f17ca8",
+        "command": "relay-exp 1 1",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 1280,
+        "y": 1000,
+        "wires": [
+            [
+                "1d9061d2.eb82ae"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "9cad47714389c0f9",
+        "type": "easing",
+        "z": "f6f2187d.f17ca8",
+        "name": "Ramp Frequency",
+        "easingType": "linear",
+        "outputType": "overTime",
+        "duration": "5000",
+        "interval": "100",
+        "numberOfValues": 10,
+        "x": 970,
+        "y": 400,
+        "wires": [
+            [
+                "c426ad04a33038eb",
+                "0639653aaa3fdb19"
+            ]
+        ]
+    },
+    {
+        "id": "c426ad04a33038eb",
+        "type": "gate",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "controlTopic": "control",
+        "defaultState": "open",
+        "openCmd": "open",
+        "closeCmd": "close",
+        "toggleCmd": "toggle",
+        "defaultCmd": "default",
+        "statusCmd": "status",
+        "persist": false,
+        "storeName": "memory",
+        "x": 1410,
+        "y": 600,
+        "wires": [
+            [
+                "e7b1acec833325e4",
+                "c7b1d770dbd3a86a"
+            ]
+        ]
+    },
+    {
+        "id": "b5ba8513.fe4308",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 860,
+        "y": 1000,
+        "wires": [
+            [
+                "1d9061d2.eb82ae",
+                "356168bb.201278",
+                "174e5996.2e2726"
+            ]
+        ]
+    },
+    {
+        "id": "1d9061d2.eb82ae",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1510,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "427ca4ea.51541c",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "100",
+        "payloadType": "num",
+        "x": 450,
+        "y": 400,
+        "wires": [
+            [
+                "dda8590916f9bbe6",
+                "487e17c5b3667b17"
+            ]
+        ]
+    },
+    {
+        "id": "39dd6522.e4f47a",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 530,
+        "y": 740,
+        "wires": [
+            [
+                "0808fed903f488a9"
+            ]
+        ]
+    },
+    {
+        "id": "5c9431b0.6acf4",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 550,
+        "y": 820,
+        "wires": [
+            [
+                "0808fed903f488a9"
+            ]
+        ]
+    },
+    {
+        "id": "24166b76.396e64",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Hz",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "33a72fa.3e6e2d",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "100",
+        "payloadType": "num",
+        "x": 360,
+        "y": 240,
+        "wires": [
+            [
+                "24166b76.396e64"
+            ]
+        ]
+    },
+    {
+        "id": "8f153935.c97878",
+        "type": "inject",
+        "z": "b994d15a.89c23",
+        "name": "initialise PWM pins and LEDs",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1260,
+        "y": 160,
+        "wires": [
+            [
+                "c8ff7cf.c91fe8",
+                "60b7aa76.1949b4"
+            ]
+        ],
+        "icon": "font-awesome/fa-exclamation"
+    },
+    {
+        "id": "c8ff7cf.c91fe8",
+        "type": "exec",
+        "z": "b994d15a.89c23",
+        "command": "omega2-ctrl gpiomux set pwm0 pwm",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 1590,
+        "y": 180,
+        "wires": [
+            [
+                "9dcd1b0d.acb748"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "9dcd1b0d.acb748",
+        "type": "exec",
+        "z": "b994d15a.89c23",
+        "command": "omega2-ctrl gpiomux set pwm1 pwm",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 1930,
+        "y": 180,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "82c4e4cd.581c88",
+        "type": "exec",
+        "z": "b994d15a.89c23",
+        "command": "onion pwm 0 10 500",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 640,
+        "y": 260,
+        "wires": [
+            [
+                "5e5e1359.46f29c"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "e923bfe5.529cb",
+        "type": "exec",
+        "z": "b994d15a.89c23",
+        "command": "onion pwm 0 disable",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 1100,
+        "y": 340,
+        "wires": [
+            [
+                "433c7bde.dab144"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ea03f5a8.18dea8",
+        "type": "inject",
+        "z": "b994d15a.89c23",
+        "name": "start stepper motor SLOW",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "start",
+        "payloadType": "msg",
+        "x": 270,
+        "y": 260,
+        "wires": [
+            [
+                "82c4e4cd.581c88"
+            ]
+        ],
+        "icon": "font-awesome/fa-play"
+    },
+    {
+        "id": "f0cc58b3.bb6c08",
+        "type": "inject",
+        "z": "b994d15a.89c23",
+        "name": "stop stepper motor",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "stop",
+        "payloadType": "msg",
+        "x": 870,
+        "y": 380,
+        "wires": [
+            [
+                "e923bfe5.529cb"
+            ]
+        ],
+        "icon": "font-awesome/fa-square"
+    },
+    {
+        "id": "433c7bde.dab144",
+        "type": "debug",
+        "z": "b994d15a.89c23",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1530,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "8b72d593.edf7d8",
+        "type": "inject",
+        "z": "b994d15a.89c23",
+        "name": "Left",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "dirout-low 11",
+        "payloadType": "str",
+        "x": 310,
+        "y": 60,
+        "wires": [
+            [
+                "dacfa964.086438"
+            ]
+        ]
+    },
+    {
+        "id": "dacfa964.086438",
+        "type": "exec",
+        "z": "b994d15a.89c23",
+        "command": "gpioctl ",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 630,
+        "y": 60,
+        "wires": [
+            [
+                "a8a1e955.1eac88",
+                "82c4e4cd.581c88"
+            ],
+            [
+                "a8a1e955.1eac88"
+            ],
+            [
+                "a8a1e955.1eac88"
+            ]
+        ]
+    },
+    {
+        "id": "afcb33d3.5b395",
+        "type": "inject",
+        "z": "b994d15a.89c23",
+        "name": "Right",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "dirout-high 11",
+        "payloadType": "str",
+        "x": 470,
+        "y": 60,
+        "wires": [
+            [
+                "dacfa964.086438"
+            ]
+        ]
+    },
+    {
+        "id": "13dd767f.c1a07a",
+        "type": "exec",
+        "z": "1b260dec.8a96b2",
+        "command": "onion pwm 0 50 5000",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 510,
+        "y": 580,
+        "wires": [
+            [
+                "91a34029.4fdef"
+            ],
+            [
+                "91a34029.4fdef"
+            ],
+            [
+                "91a34029.4fdef"
+            ]
+        ]
+    },
+    {
+        "id": "15b88fac.31fa",
+        "type": "inject",
+        "z": "1b260dec.8a96b2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "start",
+        "payloadType": "msg",
+        "x": 230,
+        "y": 580,
+        "wires": [
+            [
+                "13dd767f.c1a07a"
+            ]
+        ]
+    },
+    {
+        "id": "9e2394ee.806838",
+        "type": "exec",
+        "z": "1b260dec.8a96b2",
+        "command": "omega2-ctrl gpiomux set pwm1 pwm",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 930,
+        "y": 740,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "dee41255.64496",
+        "type": "exec",
+        "z": "1b260dec.8a96b2",
+        "command": "omega2-ctrl gpiomux set pwm0 pwm",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 590,
+        "y": 740,
+        "wires": [
+            [
+                "9e2394ee.806838"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "5e0fcc3e.32c5d4",
+        "type": "inject",
+        "z": "1b260dec.8a96b2",
+        "name": "initialise PWM pins and LEDs",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 720,
+        "wires": [
+            [
+                "dee41255.64496",
+                "21ef1942.e71f76"
+            ]
+        ],
+        "icon": "font-awesome/fa-exclamation"
+    },
+    {
+        "id": "21ef1942.e71f76",
+        "type": "exec",
+        "z": "1b260dec.8a96b2",
+        "command": "omega2-ctrl gpiomux set uart2 pwm23",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Inititalize Status LED",
+        "x": 540,
+        "y": 680,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "91a34029.4fdef",
+        "type": "debug",
+        "z": "1b260dec.8a96b2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "9abcb99c.10fd98",
+        "type": "inject",
+        "z": "b994d15a.89c23",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 950,
+        "y": 960,
+        "wires": [
+            [
+                "b0ed5ba1.b28ef8"
+            ]
+        ]
+    },
+    {
+        "id": "c4b99127.bcf75",
+        "type": "inject",
+        "z": "b994d15a.89c23",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 920,
+        "y": 700,
+        "wires": [
+            [
+                "56119893.28dbd8"
+            ]
+        ]
+    },
+    {
+        "id": "43233ab7.4f2764",
+        "type": "inject",
+        "z": "b994d15a.89c23",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 940,
+        "y": 460,
+        "wires": [
+            [
+                "b690fd4d.0f1a9"
+            ]
+        ]
+    },
+    {
+        "id": "a8a1e955.1eac88",
+        "type": "debug",
+        "z": "b994d15a.89c23",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "98fc6ac4.fe8d98",
+        "type": "exec",
+        "z": "1b260dec.8a96b2",
+        "command": "onion pwm 0 1000 50",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 520,
+        "y": 440,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "612e524b.1cf4fc",
+        "type": "inject",
+        "z": "1b260dec.8a96b2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "start",
+        "payloadType": "msg",
+        "x": 240,
+        "y": 440,
+        "wires": [
+            [
+                "98fc6ac4.fe8d98"
+            ]
+        ]
+    },
+    {
+        "id": "bc430050.85d69",
+        "type": "inject",
+        "z": "1b260dec.8a96b2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "dirout-low 11",
+        "payloadType": "str",
+        "x": 270,
+        "y": 200,
+        "wires": [
+            [
+                "38951887.99b4e8"
+            ]
+        ]
+    },
+    {
+        "id": "38951887.99b4e8",
+        "type": "exec",
+        "z": "1b260dec.8a96b2",
+        "command": "gpioctl ",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 430,
+        "y": 280,
+        "wires": [
+            [
+                "d18f6a53.b9d528"
+            ],
+            [
+                "d18f6a53.b9d528"
+            ],
+            [
+                "d18f6a53.b9d528"
+            ]
+        ]
+    },
+    {
+        "id": "c0dfbc88.52ecb",
+        "type": "inject",
+        "z": "1b260dec.8a96b2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "dirout-high 11",
+        "payloadType": "str",
+        "x": 260,
+        "y": 300,
+        "wires": [
+            [
+                "38951887.99b4e8"
+            ]
+        ]
+    },
+    {
+        "id": "d18f6a53.b9d528",
+        "type": "debug",
+        "z": "1b260dec.8a96b2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "5ce41b26.7e86a4",
+        "type": "exec",
+        "z": "1b260dec.8a96b2",
+        "command": "onion pwm 0 disable",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 520,
+        "y": 380,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "b64b1c4a.75619",
+        "type": "inject",
+        "z": "1b260dec.8a96b2",
+        "name": "stop stepper motor",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "stop",
+        "payloadType": "msg",
+        "x": 250,
+        "y": 380,
+        "wires": [
+            [
+                "5ce41b26.7e86a4"
+            ]
+        ],
+        "icon": "font-awesome/fa-square"
+    },
+    {
+        "id": "81511872.2c9368",
+        "type": "exec",
+        "z": "b994d15a.89c23",
+        "command": "onion pwm 0 1 2400",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 560,
+        "y": 360,
+        "wires": [
+            [
+                "5e5e1359.46f29c"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "6a47bfca.bf997",
+        "type": "inject",
+        "z": "b994d15a.89c23",
+        "name": "start stepper motor FAST",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "start",
+        "payloadType": "msg",
+        "x": 270,
+        "y": 340,
+        "wires": [
+            [
+                "81511872.2c9368"
+            ]
+        ],
+        "icon": "font-awesome/fa-play"
+    },
+    {
+        "id": "5e5e1359.46f29c",
+        "type": "delay",
+        "z": "b994d15a.89c23",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 910,
+        "y": 280,
+        "wires": [
+            [
+                "e923bfe5.529cb"
+            ]
+        ]
+    },
+    {
+        "id": "da8888e0.8eabe8",
+        "type": "inject",
+        "z": "b994d15a.89c23",
+        "name": "Left",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "dirout-low 11",
+        "payloadType": "str",
+        "x": 310,
+        "y": 180,
+        "wires": [
+            [
+                "d0b42cef.ec22c"
+            ]
+        ]
+    },
+    {
+        "id": "d0b42cef.ec22c",
+        "type": "exec",
+        "z": "b994d15a.89c23",
+        "command": "gpioctl ",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 630,
+        "y": 140,
+        "wires": [
+            [
+                "77d62dc9.1252a4",
+                "81511872.2c9368"
+            ],
+            [
+                "77d62dc9.1252a4"
+            ],
+            [
+                "77d62dc9.1252a4"
+            ]
+        ]
+    },
+    {
+        "id": "43275c92.f4d404",
+        "type": "inject",
+        "z": "b994d15a.89c23",
+        "name": "Right",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "dirout-high 11",
+        "payloadType": "str",
+        "x": 470,
+        "y": 180,
+        "wires": [
+            [
+                "d0b42cef.ec22c"
+            ]
+        ]
+    },
+    {
+        "id": "77d62dc9.1252a4",
+        "type": "debug",
+        "z": "b994d15a.89c23",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 140,
+        "wires": []
+    }
+]
