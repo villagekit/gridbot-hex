@@ -22,3 +22,11 @@ npm install node-red-contrib-loop-processing
 Open http://localhost:1880
 
 Click top right menu > Import > Select a file to import > Import "flows.json"
+
+## pins
+
+- side stepper motor driver
+  - pulse +: pwm0 / gpio18
+  - pulse -: gnd
+  - dir +: gpio11
+  - dir -: gnd
