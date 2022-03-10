@@ -1,0 +1,27 @@
+[
+    {
+        "id": "df4b8322.7bdd9",
+        "type": "change",
+        "z": "69d324cb.25809c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "numberOfStepsPerCycle",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    }
+]
