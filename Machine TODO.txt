@@ -1,0 +1,17 @@
+- [ ] attach switches
+- [ ] work out how to get analog / digital board talking to node red
+- [ ] write flow for calibrating side motor steps
+- [ ] refactor main flow
+- [ ] wire e-stop
+- [ ] send pulses to motor controller to set drill motor speed
+- [ ] add dashboard
+  - [ ] config
+    - [ ] number of steps per cycle: 10
+    - [ ] side max speed
+    - [ ] up/down max speed
+    - [ ] drill motor speed
+  - [ ] go home
+  - [ ] do one step of the cycle
+  - [ ] start full cycle
+  - [ ] stop
+  - [ ] Buy food-safe grease
