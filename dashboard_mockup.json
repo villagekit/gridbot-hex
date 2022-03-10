@@ -1,8 +1,156 @@
 [
     {
+        "id": "d494211d.17046",
+        "type": "tab",
+        "label": "Machine Config",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "5f7534bd.46d43c",
+        "type": "tab",
+        "label": "Machine Actions",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "873084f2.462fe8",
+        "type": "ui_tab",
+        "name": "Machine Dashboard",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "7436ae04.20b41",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "26a03a7.87265c6",
+        "type": "ui_group",
+        "name": "Machine Actions",
+        "tab": "873084f2.462fe8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "91c2e7e9.4deab8",
+        "type": "ui_group",
+        "name": "Machine Config",
+        "tab": "873084f2.462fe8",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "9701fa46.351088",
+        "type": "ui_group",
+        "name": "Machine Config Preview",
+        "tab": "873084f2.462fe8",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
         "id": "df4b8322.7bdd9",
         "type": "change",
-        "z": "69d324cb.25809c",
+        "z": "d494211d.17046",
         "name": "",
         "rules": [
             {
@@ -18,10 +166,644 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 940,
-        "y": 460,
+        "x": 880,
+        "y": 180,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "92dfa816.3848e8",
+        "type": "ui_text_input",
+        "z": "d494211d.17046",
+        "name": "Number of steps per cycle",
+        "label": "Number of steps per cycle",
+        "tooltip": "",
+        "group": "91c2e7e9.4deab8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": "10",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 340,
+        "y": 140,
+        "wires": [
+            [
+                "f48ac120.12d8f"
+            ]
+        ]
+    },
+    {
+        "id": "f48ac120.12d8f",
+        "type": "function",
+        "z": "d494211d.17046",
+        "name": "",
+        "func": "\nreturn {\n    payload: Math.min(Math.max(msg.payload, 1), 50)\n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 600,
+        "y": 140,
+        "wires": [
+            [
+                "df4b8322.7bdd9",
+                "b09fade1.64055",
+                "92dfa816.3848e8"
+            ]
+        ]
+    },
+    {
+        "id": "b09fade1.64055",
+        "type": "ui_text",
+        "z": "d494211d.17046",
+        "group": "9701fa46.351088",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Number of steps per cycle",
+        "label": "Number of steps per cycle",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 860,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "497ff420.ab494c",
+        "type": "inject",
+        "z": "d494211d.17046",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 410,
+        "y": 100,
+        "wires": [
+            [
+                "f48ac120.12d8f"
+            ]
+        ]
+    },
+    {
+        "id": "dfc56ee1.6ffd1",
+        "type": "change",
+        "z": "d494211d.17046",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "horizontalMaxSpeedInMetersPerSecond",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "64d62a81.5f11b4",
+        "type": "ui_text_input",
+        "z": "d494211d.17046",
+        "name": "Horizontal max speed",
+        "label": "Horizontal max speed (m/s)",
+        "tooltip": "",
+        "group": "91c2e7e9.4deab8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": "10",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 360,
+        "y": 260,
+        "wires": [
+            [
+                "9564725d.5972e"
+            ]
+        ]
+    },
+    {
+        "id": "9564725d.5972e",
+        "type": "function",
+        "z": "d494211d.17046",
+        "name": "",
+        "func": "\nreturn {\n    payload: Math.min(Math.max(msg.payload, 0), 1)\n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 600,
+        "y": 260,
+        "wires": [
+            [
+                "dfc56ee1.6ffd1",
+                "e5d5fe28.e9e61",
+                "64d62a81.5f11b4"
+            ]
+        ]
+    },
+    {
+        "id": "e5d5fe28.e9e61",
+        "type": "ui_text",
+        "z": "d494211d.17046",
+        "group": "9701fa46.351088",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Horizontal max speed",
+        "label": "Horizontal max speed (m/s)",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 840,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "fb81bb16.649c48",
+        "type": "inject",
+        "z": "d494211d.17046",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0.5",
+        "payloadType": "num",
+        "x": 410,
+        "y": 220,
+        "wires": [
+            [
+                "9564725d.5972e"
+            ]
+        ]
+    },
+    {
+        "id": "2d7c056e.9c1e8a",
+        "type": "change",
+        "z": "d494211d.17046",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "verticalMaxSpeedInMetersPerSecond",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ba7a94b.a823e68",
+        "type": "ui_text_input",
+        "z": "d494211d.17046",
+        "name": "Vertical max speed",
+        "label": "Vertical max speed (m/s)",
+        "tooltip": "",
+        "group": "91c2e7e9.4deab8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": "10",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 350,
+        "y": 380,
+        "wires": [
+            [
+                "5ff370f2.f1ac"
+            ]
+        ]
+    },
+    {
+        "id": "5ff370f2.f1ac",
+        "type": "function",
+        "z": "d494211d.17046",
+        "name": "",
+        "func": "\nreturn {\n    payload: Math.min(Math.max(msg.payload, 0), 1)\n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 600,
+        "y": 380,
+        "wires": [
+            [
+                "2d7c056e.9c1e8a",
+                "d37d6b3.b912898",
+                "ba7a94b.a823e68"
+            ]
+        ]
+    },
+    {
+        "id": "d37d6b3.b912898",
+        "type": "ui_text",
+        "z": "d494211d.17046",
+        "group": "9701fa46.351088",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Vertical max speed",
+        "label": "Vertical max speed (m/s)",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 830,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "dc4e571d.396218",
+        "type": "inject",
+        "z": "d494211d.17046",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0.5",
+        "payloadType": "num",
+        "x": 410,
+        "y": 340,
+        "wires": [
+            [
+                "5ff370f2.f1ac"
+            ]
+        ]
+    },
+    {
+        "id": "d97bc331.4827c",
+        "type": "change",
+        "z": "d494211d.17046",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "drillMotorSpeedInRpm",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 880,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "391d7e9.35b5482",
+        "type": "ui_text_input",
+        "z": "d494211d.17046",
+        "name": "Drill motor speed",
+        "label": "Drill motor speed (rpm)",
+        "tooltip": "",
+        "group": "91c2e7e9.4deab8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": "10",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 370,
+        "y": 500,
+        "wires": [
+            [
+                "c0b0da34.f49658"
+            ]
+        ]
+    },
+    {
+        "id": "c0b0da34.f49658",
+        "type": "function",
+        "z": "d494211d.17046",
+        "name": "",
+        "func": "\nreturn {\n    payload: Math.min(Math.max(msg.payload, 1), 50)\n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 600,
+        "y": 500,
+        "wires": [
+            [
+                "d97bc331.4827c",
+                "dae5e833.ae22a8",
+                "391d7e9.35b5482"
+            ]
+        ]
+    },
+    {
+        "id": "dae5e833.ae22a8",
+        "type": "ui_text",
+        "z": "d494211d.17046",
+        "group": "9701fa46.351088",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Drill motor speed",
+        "label": "Drill motor speed (rpm)",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 830,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "9c42e30c.93754",
+        "type": "inject",
+        "z": "d494211d.17046",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 410,
+        "y": 460,
+        "wires": [
+            [
+                "c0b0da34.f49658"
+            ]
+        ]
+    },
+    {
+        "id": "60f31019.f3aa",
+        "type": "ui_button",
+        "z": "5f7534bd.46d43c",
+        "name": "Go to home",
+        "group": "26a03a7.87265c6",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Go to home",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "#606060",
+        "icon": "fa-home",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 210,
+        "y": 200,
+        "wires": [
+            [
+                "31acdcbf.24bf84"
+            ]
+        ]
+    },
+    {
+        "id": "7bba6700.0024b8",
+        "type": "ui_button",
+        "z": "5f7534bd.46d43c",
+        "name": "Perform one step of cycle",
+        "group": "26a03a7.87265c6",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Perform one step of cycle",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "#1976d2",
+        "icon": "fa-step-forward",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 170,
+        "y": 300,
+        "wires": [
+            [
+                "31acdcbf.24bf84"
+            ]
+        ]
+    },
+    {
+        "id": "2d5e140b.f4eb7c",
+        "type": "ui_button",
+        "z": "5f7534bd.46d43c",
+        "name": "Start full cycle",
+        "group": "26a03a7.87265c6",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Start full cycle",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "#388e3c",
+        "icon": "fa-play",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 200,
+        "y": 400,
+        "wires": [
+            [
+                "31acdcbf.24bf84"
+            ]
+        ]
+    },
+    {
+        "id": "b2d1a816.aef8f8",
+        "type": "ui_button",
+        "z": "5f7534bd.46d43c",
+        "name": "Stop cycle",
+        "group": "26a03a7.87265c6",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Stop cycle",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "#d32f2f",
+        "icon": "fa-stop",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 210,
+        "y": 500,
+        "wires": [
+            [
+                "4e3a8f60.58724"
+            ]
+        ]
+    },
+    {
+        "id": "1d3de1d6.be687e",
+        "type": "ui_text",
+        "z": "5f7534bd.46d43c",
+        "group": "26a03a7.87265c6",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "Machine status",
+        "label": "Machine status",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 860,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "31acdcbf.24bf84",
+        "type": "trigger",
+        "z": "5f7534bd.46d43c",
+        "name": "Trigger running",
+        "op1": "running",
+        "op2": "",
+        "op1type": "str",
+        "op2type": "nul",
+        "duration": "250",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 620,
+        "y": 200,
+        "wires": [
+            [
+                "1d3de1d6.be687e"
+            ]
+        ]
+    },
+    {
+        "id": "4e3a8f60.58724",
+        "type": "trigger",
+        "z": "5f7534bd.46d43c",
+        "name": "Trigger stopped",
+        "op1": "stopped",
+        "op2": "",
+        "op1type": "str",
+        "op2type": "nul",
+        "duration": "250",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 620,
+        "y": 300,
+        "wires": [
+            [
+                "1d3de1d6.be687e"
+            ]
+        ]
+    },
+    {
+        "id": "d57b44b.10107b8",
+        "type": "inject",
+        "z": "5f7534bd.46d43c",
+        "name": "Initialize as stopped",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "4e3a8f60.58724"
+            ]
         ]
     }
 ]
