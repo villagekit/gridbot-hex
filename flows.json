@@ -120,8 +120,8 @@
         "in": [],
         "out": [
             {
-                "x": 880,
-                "y": 180,
+                "x": 780,
+                "y": 340,
                 "wires": [
                     {
                         "id": "ac630bce.052528",
@@ -129,6 +129,14 @@
                     },
                     {
                         "id": "48e35281.2df614",
+                        "port": 0
+                    },
+                    {
+                        "id": "b1167884.37292",
+                        "port": 0
+                    },
+                    {
+                        "id": "b1575047.868aa8",
                         "port": 0
                     }
                 ]
@@ -182,7 +190,11 @@
             {
                 "x": 300,
                 "y": 180,
-                "wires": []
+                "wires": [
+                    {
+                        "id": "be7f6826.d31"
+                    }
+                ]
             }
         ],
         "out": [
@@ -484,7 +496,7 @@
         "type": "ui_spacer",
         "name": "spacer",
         "group": "fa964865.1a966",
-        "order": 4,
+        "order": 7,
         "width": 1,
         "height": 1
     },
@@ -522,7 +534,7 @@
         "repeat": ".5",
         "crontab": "",
         "once": true,
-        "onceDelay": ".5",
+        "onceDelay": ".25",
         "topic": "",
         "payload": "0",
         "payloadType": "msg",
@@ -553,31 +565,6 @@
             ],
             [],
             []
-        ]
-    },
-    {
-        "id": "63fdb6ec.da1f48",
-        "type": "inject",
-        "z": "ee8236a3.7cf7c8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": ".5",
-        "crontab": "",
-        "once": true,
-        "onceDelay": ".5",
-        "topic": "",
-        "payload": "0",
-        "payloadType": "msg",
-        "x": 210,
-        "y": 240,
-        "wires": [
-            [
-                "5d97b609.8afe"
-            ]
         ]
     },
     {
@@ -1076,7 +1063,7 @@
         "type": "ui_text",
         "z": "ee8236a3.7cf7c8",
         "group": "fa964865.1a966",
-        "order": 2,
+        "order": 3,
         "width": 0,
         "height": 0,
         "name": "",
@@ -1092,7 +1079,7 @@
         "type": "ui_text",
         "z": "ee8236a3.7cf7c8",
         "group": "fa964865.1a966",
-        "order": 3,
+        "order": 4,
         "width": 0,
         "height": 0,
         "name": "",
@@ -3725,7 +3712,7 @@
         "z": "35dd499b.01a916",
         "name": "",
         "group": "fa964865.1a966",
-        "order": 5,
+        "order": 8,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -3779,7 +3766,7 @@
         "label": "Pulse direction (on = left, off = right)",
         "tooltip": "",
         "group": "fa964865.1a966",
-        "order": 7,
+        "order": 10,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -3896,7 +3883,7 @@
         "label": "Pulse count",
         "tooltip": "",
         "group": "fa964865.1a966",
-        "order": 6,
+        "order": 9,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -4993,7 +4980,7 @@
         "type": "ui_text",
         "z": "d494211d.17046",
         "group": "fa964865.1a966",
-        "order": 1,
+        "order": 2,
         "width": 0,
         "height": 0,
         "name": "",
@@ -5050,7 +5037,7 @@
         "label": "Pulse speed (on = fast, off = slow)",
         "tooltip": "",
         "group": "fa964865.1a966",
-        "order": 7,
+        "order": 11,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -5219,6 +5206,266 @@
         "x": 380,
         "y": 320,
         "wires": [
+            []
+        ]
+    },
+    {
+        "id": "420f5e5.398122",
+        "type": "exec",
+        "z": "ee8236a3.7cf7c8",
+        "command": "adc-exp -j 2",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 410,
+        "y": 440,
+        "wires": [
+            [
+                "1f35a3bd.ca468c"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "81f22419.9aafb8",
+        "type": "exec",
+        "z": "ee8236a3.7cf7c8",
+        "command": "adc-exp -j 3",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 410,
+        "y": 560,
+        "wires": [
+            [
+                "932ebd50.6f57e8"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "8dc95180.ba0b1",
+        "type": "ui_text",
+        "z": "ee8236a3.7cf7c8",
+        "group": "fa964865.1a966",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Limit Y Min",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 920,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "dd8e7472.f6b068",
+        "type": "ui_text",
+        "z": "ee8236a3.7cf7c8",
+        "group": "fa964865.1a966",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Limit Y Max",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 920,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "ddecc15.3c036c",
+        "type": "change",
+        "z": "ee8236a3.7cf7c8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "limitYMin",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f8852dd2.277238",
+        "type": "change",
+        "z": "ee8236a3.7cf7c8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "limitYMax",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b1167884.37292",
+        "type": "rbe",
+        "z": "ee8236a3.7cf7c8",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": false,
+        "property": "payload",
+        "x": 750,
+        "y": 440,
+        "wires": [
+            [
+                "ddecc15.3c036c",
+                "8dc95180.ba0b1"
+            ]
+        ]
+    },
+    {
+        "id": "b1575047.868aa8",
+        "type": "rbe",
+        "z": "ee8236a3.7cf7c8",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "x": 750,
+        "y": 560,
+        "wires": [
+            [
+                "f8852dd2.277238",
+                "dd8e7472.f6b068"
+            ]
+        ]
+    },
+    {
+        "id": "1f35a3bd.ca468c",
+        "type": "function",
+        "z": "ee8236a3.7cf7c8",
+        "name": "",
+        "func": "const payload = JSON.parse(msg.payload)\nconst isOn = payload.voltage > 3\nreturn {\n  topic: \"limitXMin\",\n  payload: isOn\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 600,
+        "y": 440,
+        "wires": [
+            [
+                "b1167884.37292"
+            ]
+        ]
+    },
+    {
+        "id": "932ebd50.6f57e8",
+        "type": "function",
+        "z": "ee8236a3.7cf7c8",
+        "name": "",
+        "func": "const payload = JSON.parse(msg.payload)\nconst isOn = payload.voltage > 3\nreturn {\n  topic: \"limitXMax\",\n  payload: isOn\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 600,
+        "y": 560,
+        "wires": [
+            [
+                "b1575047.868aa8"
+            ]
+        ]
+    },
+    {
+        "id": "b628e0cd.2a2f3",
+        "type": "inject",
+        "z": "ee8236a3.7cf7c8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": ".5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": ".5",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "msg",
+        "x": 210,
+        "y": 240,
+        "wires": [
+            [
+                "5d97b609.8afe"
+            ]
+        ]
+    },
+    {
+        "id": "be7f6826.d31",
+        "type": "switch",
+        "z": "a4de32d5.4d7bb",
+        "name": "switch on msg.topic",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "moveY",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "limitYMin",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "limitYMax",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 470,
+        "y": 180,
+        "wires": [
+            [],
+            [],
             []
         ]
     }
