@@ -501,27 +501,6 @@
         "height": 1
     },
     {
-        "id": "93609213.3351a",
-        "type": "exec",
-        "z": "ee8236a3.7cf7c8",
-        "command": "adc-exp -j 1",
-        "addpay": false,
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "oldrc": false,
-        "name": "",
-        "x": 410,
-        "y": 120,
-        "wires": [
-            [
-                "e88e94c2.2a581"
-            ],
-            [],
-            []
-        ]
-    },
-    {
         "id": "f68ba438.461b3",
         "type": "inject",
         "z": "ee8236a3.7cf7c8",
@@ -531,10 +510,10 @@
                 "p": "payload"
             }
         ],
-        "repeat": ".5",
+        "repeat": ".3",
         "crontab": "",
         "once": true,
-        "onceDelay": ".25",
+        "onceDelay": ".5",
         "topic": "",
         "payload": "0",
         "payloadType": "msg",
@@ -542,7 +521,7 @@
         "y": 120,
         "wires": [
             [
-                "93609213.3351a"
+                "972032bc.06d4c"
             ]
         ]
     },
@@ -550,18 +529,18 @@
         "id": "5d97b609.8afe",
         "type": "exec",
         "z": "ee8236a3.7cf7c8",
-        "command": "adc-exp -j 0",
+        "command": " fast-gpio read 2",
         "addpay": false,
         "append": "",
         "useSpawn": "false",
         "timer": "",
         "oldrc": false,
         "name": "",
-        "x": 410,
+        "x": 400,
         "y": 240,
         "wires": [
             [
-                "866f2607.5107f8"
+                "46970967.d806c8"
             ],
             [],
             []
@@ -1120,9 +1099,7 @@
         "x": 210,
         "y": 120,
         "wires": [
-            [
-                "d236bfaa.f297d8"
-            ],
+            [],
             [
                 "a3b9d16b.dc066"
             ],
@@ -4135,42 +4112,6 @@
         ]
     },
     {
-        "id": "e88e94c2.2a581",
-        "type": "function",
-        "z": "ee8236a3.7cf7c8",
-        "name": "",
-        "func": "const payload = JSON.parse(msg.payload)\nconst isOn = payload.voltage > 3\nreturn {\n  topic: \"limitXMin\",\n  payload: isOn\n}",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 600,
-        "y": 120,
-        "wires": [
-            [
-                "48e35281.2df614"
-            ]
-        ]
-    },
-    {
-        "id": "866f2607.5107f8",
-        "type": "function",
-        "z": "ee8236a3.7cf7c8",
-        "name": "",
-        "func": "const payload = JSON.parse(msg.payload)\nconst isOn = payload.voltage > 3\nreturn {\n  topic: \"limitXMax\",\n  payload: isOn\n}",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 600,
-        "y": 240,
-        "wires": [
-            [
-                "ac630bce.052528"
-            ]
-        ]
-    },
-    {
         "id": "38a2e467.27e6cc",
         "type": "change",
         "z": "78eabbd8.6c2dbc",
@@ -5210,48 +5151,6 @@
         ]
     },
     {
-        "id": "420f5e5.398122",
-        "type": "exec",
-        "z": "ee8236a3.7cf7c8",
-        "command": "adc-exp -j 2",
-        "addpay": false,
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "oldrc": false,
-        "name": "",
-        "x": 410,
-        "y": 440,
-        "wires": [
-            [
-                "1f35a3bd.ca468c"
-            ],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "81f22419.9aafb8",
-        "type": "exec",
-        "z": "ee8236a3.7cf7c8",
-        "command": "adc-exp -j 3",
-        "addpay": false,
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "oldrc": false,
-        "name": "",
-        "x": 410,
-        "y": 560,
-        "wires": [
-            [
-                "932ebd50.6f57e8"
-            ],
-            [],
-            []
-        ]
-    },
-    {
         "id": "8dc95180.ba0b1",
         "type": "ui_text",
         "z": "ee8236a3.7cf7c8",
@@ -5374,67 +5273,6 @@
         ]
     },
     {
-        "id": "1f35a3bd.ca468c",
-        "type": "function",
-        "z": "ee8236a3.7cf7c8",
-        "name": "",
-        "func": "const payload = JSON.parse(msg.payload)\nconst isOn = payload.voltage > 3\nreturn {\n  topic: \"limitXMin\",\n  payload: isOn\n}",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 600,
-        "y": 440,
-        "wires": [
-            [
-                "b1167884.37292"
-            ]
-        ]
-    },
-    {
-        "id": "932ebd50.6f57e8",
-        "type": "function",
-        "z": "ee8236a3.7cf7c8",
-        "name": "",
-        "func": "const payload = JSON.parse(msg.payload)\nconst isOn = payload.voltage > 3\nreturn {\n  topic: \"limitXMax\",\n  payload: isOn\n}",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 600,
-        "y": 560,
-        "wires": [
-            [
-                "b1575047.868aa8"
-            ]
-        ]
-    },
-    {
-        "id": "b628e0cd.2a2f3",
-        "type": "inject",
-        "z": "ee8236a3.7cf7c8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": ".5",
-        "crontab": "",
-        "once": true,
-        "onceDelay": ".5",
-        "topic": "",
-        "payload": "0",
-        "payloadType": "msg",
-        "x": 210,
-        "y": 240,
-        "wires": [
-            [
-                "5d97b609.8afe"
-            ]
-        ]
-    },
-    {
         "id": "be7f6826.d31",
         "type": "switch",
         "z": "a4de32d5.4d7bb",
@@ -5467,6 +5305,366 @@
             [],
             [],
             []
+        ]
+    },
+    {
+        "id": "8542a726.85ea68",
+        "type": "exec",
+        "z": "ee8236a3.7cf7c8",
+        "command": "omega2-ctrl gpiomux set i2s gpio",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 540,
+        "y": 740,
+        "wires": [
+            [],
+            [],
+            [
+                "8d36bf4b.8492d",
+                "dd9dfad7.f9f5c8"
+            ]
+        ]
+    },
+    {
+        "id": "33d333da.c17ab4",
+        "type": "inject",
+        "z": "ee8236a3.7cf7c8",
+        "name": "init",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 740,
+        "wires": [
+            [
+                "8542a726.85ea68",
+                "4a94c29b.5e08cc"
+            ]
+        ]
+    },
+    {
+        "id": "8d36bf4b.8492d",
+        "type": "exec",
+        "z": "ee8236a3.7cf7c8",
+        "command": "fast-gpio set-input 2",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 850,
+        "y": 720,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "4a94c29b.5e08cc",
+        "type": "exec",
+        "z": "ee8236a3.7cf7c8",
+        "command": "omega2-ctrl gpiomux set i2c gpio",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 540,
+        "y": 880,
+        "wires": [
+            [],
+            [],
+            [
+                "ff449cce.fe66e8",
+                "d3a87f17.78f85"
+            ]
+        ]
+    },
+    {
+        "id": "dd9dfad7.f9f5c8",
+        "type": "exec",
+        "z": "ee8236a3.7cf7c8",
+        "command": "fast-gpio set-input 3",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 850,
+        "y": 780,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "d3a87f17.78f85",
+        "type": "exec",
+        "z": "ee8236a3.7cf7c8",
+        "command": "fast-gpio set-input 4",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 850,
+        "y": 860,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ff449cce.fe66e8",
+        "type": "exec",
+        "z": "ee8236a3.7cf7c8",
+        "command": "fast-gpio set-input 5",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 850,
+        "y": 920,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "972032bc.06d4c",
+        "type": "exec",
+        "z": "ee8236a3.7cf7c8",
+        "command": " fast-gpio read 3",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 400,
+        "y": 120,
+        "wires": [
+            [
+                "6b06b4ee.5a09ac"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "6b06b4ee.5a09ac",
+        "type": "function",
+        "z": "ee8236a3.7cf7c8",
+        "name": "",
+        "func": "const { payload } = msg\n\nconst strs = payload.split(\":\")\nconst str = strs[1].trim()\nconst num = parseInt(str)\nconst bool = num === 1 ? true : false\n\nreturn {\n  topic: \"limitXMax\",\n  payload: bool\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 580,
+        "y": 120,
+        "wires": [
+            [
+                "48e35281.2df614"
+            ]
+        ]
+    },
+    {
+        "id": "46970967.d806c8",
+        "type": "function",
+        "z": "ee8236a3.7cf7c8",
+        "name": "",
+        "func": "const { payload } = msg\n\nconst strs = payload.split(\":\")\nconst str = strs[1].trim()\nconst num = parseInt(str)\nconst bool = num === 1 ? true : false\n\nreturn {\n  topic: \"limitXMax\",\n  payload: bool\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 580,
+        "y": 240,
+        "wires": [
+            [
+                "ac630bce.052528"
+            ]
+        ]
+    },
+    {
+        "id": "1c8f78c4.8b8e77",
+        "type": "inject",
+        "z": "ee8236a3.7cf7c8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": ".3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "msg",
+        "x": 210,
+        "y": 240,
+        "wires": [
+            [
+                "5d97b609.8afe"
+            ]
+        ]
+    },
+    {
+        "id": "2c4a6547.76f2aa",
+        "type": "inject",
+        "z": "ee8236a3.7cf7c8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": ".3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": ".5",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "msg",
+        "x": 210,
+        "y": 440,
+        "wires": [
+            [
+                "ccd2cf9c.1c6dc"
+            ]
+        ]
+    },
+    {
+        "id": "94c76d25.8bc1d8",
+        "type": "exec",
+        "z": "ee8236a3.7cf7c8",
+        "command": " fast-gpio read 5",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 400,
+        "y": 560,
+        "wires": [
+            [
+                "cd8efcbb.04782"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ccd2cf9c.1c6dc",
+        "type": "exec",
+        "z": "ee8236a3.7cf7c8",
+        "command": " fast-gpio read 4",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 400,
+        "y": 440,
+        "wires": [
+            [
+                "c8dd2fc2.a70f9"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "c8dd2fc2.a70f9",
+        "type": "function",
+        "z": "ee8236a3.7cf7c8",
+        "name": "",
+        "func": "const { payload } = msg\n\nconst strs = payload.split(\":\")\nconst str = strs[1].trim()\nconst num = parseInt(str)\nconst bool = num === 1 ? true : false\n\nreturn {\n  topic: \"limitXMax\",\n  payload: bool\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 580,
+        "y": 440,
+        "wires": [
+            [
+                "b1167884.37292"
+            ]
+        ]
+    },
+    {
+        "id": "cd8efcbb.04782",
+        "type": "function",
+        "z": "ee8236a3.7cf7c8",
+        "name": "",
+        "func": "const { payload } = msg\n\nconst strs = payload.split(\":\")\nconst str = strs[1].trim()\nconst num = parseInt(str)\nconst bool = num === 1 ? true : false\n\nreturn {\n  topic: \"limitXMax\",\n  payload: bool\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 580,
+        "y": 560,
+        "wires": [
+            [
+                "b1575047.868aa8"
+            ]
+        ]
+    },
+    {
+        "id": "a7f07fda.c0d888",
+        "type": "inject",
+        "z": "ee8236a3.7cf7c8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": ".3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": ".5",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "msg",
+        "x": 210,
+        "y": 560,
+        "wires": [
+            [
+                "94c76d25.8bc1d8"
+            ]
         ]
     }
 ]
