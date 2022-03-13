@@ -46,8 +46,8 @@
         ],
         "out": [
             {
-                "x": 1320,
-                "y": 320,
+                "x": 1480,
+                "y": 360,
                 "wires": [
                     {
                         "id": "b37498a5.e0156",
@@ -56,8 +56,8 @@
                 ]
             },
             {
-                "x": 1000,
-                "y": 380,
+                "x": 1160,
+                "y": 420,
                 "wires": [
                     {
                         "id": "d9ec87cb.c96608",
@@ -72,7 +72,7 @@
     {
         "id": "5dd3baf0.31563c",
         "type": "subflow",
-        "name": "Stepper Distance",
+        "name": "Stepper Move",
         "info": "",
         "category": "",
         "in": [
@@ -183,7 +183,7 @@
     {
         "id": "a4de32d5.4d7bb",
         "type": "subflow",
-        "name": "Drill Up and Down",
+        "name": "Drill Cycle",
         "info": "",
         "category": "",
         "in": [
@@ -199,7 +199,7 @@
         ],
         "out": [
             {
-                "x": 980,
+                "x": 1300,
                 "y": 180,
                 "wires": []
             }
@@ -300,6 +300,42 @@
                     {
                         "id": "bef5d326.492dc8",
                         "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "color": "#DDAA99"
+    },
+    {
+        "id": "232a99ee.3eda76",
+        "type": "subflow",
+        "name": "Drill Move",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 240,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "59cba7cf.ae336"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1220,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "af6d0f33.717a68",
+                        "port": 2
+                    },
+                    {
+                        "id": "97572c61.40ccc",
+                        "port": 2
                     }
                 ]
             }
@@ -501,6 +537,15 @@
         "height": 1
     },
     {
+        "id": "c156a85f.d92258",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "fa964865.1a966",
+        "order": 12,
+        "width": 1,
+        "height": 1
+    },
+    {
         "id": "f68ba438.461b3",
         "type": "inject",
         "z": "ee8236a3.7cf7c8",
@@ -510,7 +555,7 @@
                 "p": "payload"
             }
         ],
-        "repeat": ".3",
+        "repeat": ".5",
         "crontab": "",
         "once": true,
         "onceDelay": ".5",
@@ -587,13 +632,14 @@
         "timer": "",
         "oldrc": false,
         "name": "",
-        "x": 1010,
+        "x": 1110,
         "y": 220,
         "wires": [
             [],
             [],
             [
-                "d9ec87cb.c96608"
+                "d9ec87cb.c96608",
+                "5587aeb9.11b4a8"
             ]
         ]
     },
@@ -720,7 +766,7 @@
         "repair": false,
         "outputs": 2,
         "x": 950,
-        "y": 100,
+        "y": 80,
         "wires": [
             [
                 "64c95bd2.bb373c"
@@ -809,11 +855,11 @@
         "x": 670,
         "y": 580,
         "wires": [
+            [],
+            [],
             [
                 "a4ec6688.ac15e8"
-            ],
-            [],
-            []
+            ]
         ]
     },
     {
@@ -861,7 +907,7 @@
         "wires": [
             [
                 "39ecff13.6d2d48",
-                "49d37433.c3ddb4"
+                "3f3de29c.be1176"
             ]
         ]
     },
@@ -869,14 +915,14 @@
         "id": "49d37433.c3ddb4",
         "type": "exec",
         "z": "8f0de7bc.a4daa8",
-        "command": "fast-gpio set-output 11",
+        "command": "fast-gpio set-output 19",
         "addpay": true,
         "append": "",
         "useSpawn": "false",
         "timer": "",
         "oldrc": false,
         "name": "",
-        "x": 620,
+        "x": 980,
         "y": 640,
         "wires": [
             [],
@@ -939,8 +985,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 1110,
-        "y": 320,
+        "x": 1270,
+        "y": 360,
         "wires": [
             []
         ]
@@ -1029,7 +1075,7 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 650,
+        "x": 670,
         "y": 140,
         "wires": [
             [
@@ -1096,10 +1142,12 @@
         "checkall": "false",
         "repair": false,
         "outputs": 3,
-        "x": 210,
+        "x": 170,
         "y": 120,
         "wires": [
-            [],
+            [
+                "d236bfaa.f297d8"
+            ],
             [
                 "a3b9d16b.dc066"
             ],
@@ -3676,6 +3724,7 @@
         "type": "subflow:8f0de7bc.a4daa8",
         "z": "35dd499b.01a916",
         "name": "",
+        "env": [],
         "x": 780,
         "y": 1000,
         "wires": [
@@ -3693,16 +3742,16 @@
         "width": 0,
         "height": 0,
         "passthru": false,
-        "label": "Pulse",
+        "label": "Pulse To Side",
         "tooltip": "",
         "color": "",
         "bgcolor": "",
         "icon": "",
-        "payload": "pulse",
+        "payload": "pulseX",
         "payloadType": "flow",
-        "topic": "pulse",
+        "topic": "pulseX",
         "topicType": "str",
-        "x": 390,
+        "x": 360,
         "y": 1000,
         "wires": [
             [
@@ -3718,7 +3767,7 @@
         "rules": [
             {
                 "t": "set",
-                "p": "pulse.count",
+                "p": "pulseX.count",
                 "pt": "flow",
                 "to": "payload",
                 "tot": "msg"
@@ -3729,7 +3778,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 890,
+        "x": 960,
         "y": 1060,
         "wires": [
             []
@@ -3740,7 +3789,7 @@
         "type": "ui_switch",
         "z": "35dd499b.01a916",
         "name": "",
-        "label": "Pulse direction (on = left, off = right)",
+        "label": "Side direction (on = left, off = right)",
         "tooltip": "",
         "group": "fa964865.1a966",
         "order": 10,
@@ -3801,7 +3850,7 @@
         "rules": [
             {
                 "t": "set",
-                "p": "pulse.direction",
+                "p": "pulseX.direction",
                 "pt": "flow",
                 "to": "payload",
                 "tot": "msg"
@@ -3812,7 +3861,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 960,
+        "x": 970,
         "y": 1120,
         "wires": [
             []
@@ -3877,24 +3926,6 @@
         ]
     },
     {
-        "id": "c4057d9d.ac04f",
-        "type": "function",
-        "z": "35dd499b.01a916",
-        "name": "",
-        "func": "\nreturn {\n    payload: Math.min(Math.max(msg.payload, 1), 10000)\n};\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 700,
-        "y": 1060,
-        "wires": [
-            [
-                "a812ddf9.e16a1"
-            ]
-        ]
-    },
-    {
         "id": "193c67d9.4b66c8",
         "type": "inject",
         "z": "35dd499b.01a916",
@@ -3902,10 +3933,6 @@
         "props": [
             {
                 "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
             }
         ],
         "repeat": "",
@@ -3935,7 +3962,8 @@
             "6c0f17da.5eafe8",
             "e31159e9.e03e88",
             "13e2bb3a.e582b5",
-            "2899590b.9ff636"
+            "2899590b.9ff636",
+            "d096cb23.060a8"
         ],
         "x": 1345,
         "y": 380,
@@ -4271,8 +4299,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 870,
-        "y": 320,
+        "x": 1030,
+        "y": 360,
         "wires": [
             [
                 "b37498a5.e0156"
@@ -4943,11 +4971,11 @@
         "syntax": "mustache",
         "template": "/root/step-pulse-{{payload.speed}}.csv {{payload.count}}",
         "output": "str",
-        "x": 760,
+        "x": 720,
         "y": 220,
         "wires": [
             [
-                "ff237c4d.5d766"
+                "6b380681.c8c778"
             ]
         ]
     },
@@ -4955,13 +4983,13 @@
         "id": "d236bfaa.f297d8",
         "type": "function",
         "z": "8f0de7bc.a4daa8",
-        "name": "round count and default speed",
-        "func": "msg.payload.count = Math.round(msg.payload.count)\nmsg.payload.speed = msg.payload.speed || \"slow\"\n\nreturn msg",
+        "name": "sanitize",
+        "func": "if (typeof msg.payload !== 'object') return\nif (msg.payload.direction !== 'left' && msg.payload.direction !== 'right') return\nif (typeof msg.payload.count !== 'number') return\n\nmsg.payload.count = Math.round(msg.payload.count)\nmsg.payload.speed = msg.payload.speed || \"slow\"\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 490,
+        "x": 440,
         "y": 80,
         "wires": [
             [
@@ -4975,7 +5003,7 @@
         "type": "ui_switch",
         "z": "35dd499b.01a916",
         "name": "",
-        "label": "Pulse speed (on = fast, off = slow)",
+        "label": "Side speed (on = fast, off = slow)",
         "tooltip": "",
         "group": "fa964865.1a966",
         "order": 11,
@@ -5036,7 +5064,7 @@
         "rules": [
             {
                 "t": "set",
-                "p": "pulse.speed",
+                "p": "pulseX.speed",
                 "pt": "flow",
                 "to": "payload",
                 "tot": "msg"
@@ -5325,7 +5353,8 @@
             [],
             [
                 "8d36bf4b.8492d",
-                "dd9dfad7.f9f5c8"
+                "dd9dfad7.f9f5c8",
+                "ff449cce.fe66e8"
             ]
         ]
     },
@@ -5355,7 +5384,7 @@
         "wires": [
             [
                 "8542a726.85ea68",
-                "4a94c29b.5e08cc"
+                "d3a87f17.78f85"
             ]
         ]
     },
@@ -5376,28 +5405,6 @@
             [],
             [],
             []
-        ]
-    },
-    {
-        "id": "4a94c29b.5e08cc",
-        "type": "exec",
-        "z": "ee8236a3.7cf7c8",
-        "command": "omega2-ctrl gpiomux set i2c gpio",
-        "addpay": true,
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "oldrc": false,
-        "name": "",
-        "x": 540,
-        "y": 880,
-        "wires": [
-            [],
-            [],
-            [
-                "ff449cce.fe66e8",
-                "d3a87f17.78f85"
-            ]
         ]
     },
     {
@@ -5423,15 +5430,15 @@
         "id": "d3a87f17.78f85",
         "type": "exec",
         "z": "ee8236a3.7cf7c8",
-        "command": "fast-gpio set-input 4",
+        "command": "fast-gpio set-input 11",
         "addpay": true,
         "append": "",
         "useSpawn": "false",
         "timer": "",
         "oldrc": false,
         "name": "",
-        "x": 850,
-        "y": 860,
+        "x": 500,
+        "y": 800,
         "wires": [
             [],
             [],
@@ -5442,7 +5449,7 @@
         "id": "ff449cce.fe66e8",
         "type": "exec",
         "z": "ee8236a3.7cf7c8",
-        "command": "fast-gpio set-input 5",
+        "command": "fast-gpio set-input 0",
         "addpay": true,
         "append": "",
         "useSpawn": "false",
@@ -5450,7 +5457,7 @@
         "oldrc": false,
         "name": "",
         "x": 850,
-        "y": 920,
+        "y": 840,
         "wires": [
             [],
             [],
@@ -5483,7 +5490,7 @@
         "type": "function",
         "z": "ee8236a3.7cf7c8",
         "name": "",
-        "func": "const { payload } = msg\n\nconst strs = payload.split(\":\")\nconst str = strs[1].trim()\nconst num = parseInt(str)\nconst bool = num === 1 ? true : false\n\nreturn {\n  topic: \"limitXMax\",\n  payload: bool\n}",
+        "func": "const { payload } = msg\n\nconst strs = payload.split(\":\")\nconst str = strs[1].trim()\nconst num = parseInt(str)\nconst bool = num === 1 ? true : false\n\nreturn {\n  topic: \"limitXMin\",\n  payload: bool\n}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5524,7 +5531,7 @@
                 "p": "payload"
             }
         ],
-        "repeat": ".3",
+        "repeat": ".5",
         "crontab": "",
         "once": true,
         "onceDelay": "0.5",
@@ -5549,7 +5556,7 @@
                 "p": "payload"
             }
         ],
-        "repeat": ".3",
+        "repeat": ".5",
         "crontab": "",
         "once": true,
         "onceDelay": ".5",
@@ -5568,14 +5575,14 @@
         "id": "94c76d25.8bc1d8",
         "type": "exec",
         "z": "ee8236a3.7cf7c8",
-        "command": " fast-gpio read 5",
+        "command": " fast-gpio read 11",
         "addpay": false,
         "append": "",
         "useSpawn": "false",
         "timer": "",
         "oldrc": false,
         "name": "",
-        "x": 400,
+        "x": 390,
         "y": 560,
         "wires": [
             [
@@ -5589,7 +5596,7 @@
         "id": "ccd2cf9c.1c6dc",
         "type": "exec",
         "z": "ee8236a3.7cf7c8",
-        "command": " fast-gpio read 4",
+        "command": " fast-gpio read 0",
         "addpay": false,
         "append": "",
         "useSpawn": "false",
@@ -5611,7 +5618,7 @@
         "type": "function",
         "z": "ee8236a3.7cf7c8",
         "name": "",
-        "func": "const { payload } = msg\n\nconst strs = payload.split(\":\")\nconst str = strs[1].trim()\nconst num = parseInt(str)\nconst bool = num === 1 ? true : false\n\nreturn {\n  topic: \"limitXMax\",\n  payload: bool\n}",
+        "func": "const { payload } = msg\n\nconst strs = payload.split(\":\")\nconst str = strs[1].trim()\nconst num = parseInt(str)\nconst bool = num === 1 ? true : false\n\nreturn {\n  topic: \"limitYMin\",\n  payload: bool\n}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5629,7 +5636,7 @@
         "type": "function",
         "z": "ee8236a3.7cf7c8",
         "name": "",
-        "func": "const { payload } = msg\n\nconst strs = payload.split(\":\")\nconst str = strs[1].trim()\nconst num = parseInt(str)\nconst bool = num === 1 ? true : false\n\nreturn {\n  topic: \"limitXMax\",\n  payload: bool\n}",
+        "func": "const { payload } = msg\n\nconst strs = payload.split(\":\")\nconst str = strs[1].trim()\nconst num = parseInt(str)\nconst bool = num === 1 ? true : false\n\nreturn {\n  topic: \"limitYMax\",\n  payload: bool\n}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5652,7 +5659,7 @@
                 "p": "payload"
             }
         ],
-        "repeat": ".3",
+        "repeat": ".5",
         "crontab": "",
         "once": true,
         "onceDelay": ".5",
@@ -5664,6 +5671,908 @@
         "wires": [
             [
                 "94c76d25.8bc1d8"
+            ]
+        ]
+    },
+    {
+        "id": "6b380681.c8c778",
+        "type": "trigger",
+        "z": "8f0de7bc.a4daa8",
+        "name": "",
+        "op1": "",
+        "op2": "0",
+        "op1type": "pay",
+        "op2type": "str",
+        "duration": "0",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 900,
+        "y": 220,
+        "wires": [
+            [
+                "ff237c4d.5d766"
+            ]
+        ]
+    },
+    {
+        "id": "5587aeb9.11b4a8",
+        "type": "change",
+        "z": "8f0de7bc.a4daa8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reset",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1340,
+        "y": 220,
+        "wires": [
+            [
+                "6b380681.c8c778"
+            ]
+        ]
+    },
+    {
+        "id": "3f3de29c.be1176",
+        "type": "exec",
+        "z": "8f0de7bc.a4daa8",
+        "command": "omega2-ctrl gpiomux set pwm1 gpio",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 670,
+        "y": 640,
+        "wires": [
+            [],
+            [],
+            [
+                "49d37433.c3ddb4"
+            ]
+        ]
+    },
+    {
+        "id": "59cba7cf.ae336",
+        "type": "switch",
+        "z": "232a99ee.3eda76",
+        "name": "switch on msg.topic",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "moveY",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "limitYMin",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "limitYMax",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 410,
+        "y": 160,
+        "wires": [
+            [
+                "58071db9.3a6a6c",
+                "b46aca08.ba87d"
+            ],
+            [
+                "fadfcfb8.aa5938"
+            ],
+            [
+                "5da96e2a.b035c"
+            ]
+        ]
+    },
+    {
+        "id": "fb50e8a1.0435d8",
+        "type": "function",
+        "z": "232a99ee.3eda76",
+        "name": "ensure not at limits",
+        "func": "const { direction } = msg.payload\n\n\n// if limit switches set, don't move further towards them\nif (\n  (direction === \"down\" && global.get(\"limitYMin\"))\n  || (direction === \"up\" && global.get(\"limitYMax\"))\n) {\n  return\n}\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 390,
+        "y": 80,
+        "wires": [
+            [
+                "eda69e27.0aff9"
+            ]
+        ]
+    },
+    {
+        "id": "b6ad17e7.c28b",
+        "type": "exec",
+        "z": "232a99ee.3eda76",
+        "command": "relay-exp 0 1",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "relay down on",
+        "x": 1100,
+        "y": 340,
+        "wires": [
+            [
+                "95881159.bd61c"
+            ],
+            [
+                "95881159.bd61c"
+            ],
+            [
+                "f731dce9.84a958"
+            ]
+        ]
+    },
+    {
+        "id": "68f1ffbe.f9a64",
+        "type": "comment",
+        "z": "232a99ee.3eda76",
+        "name": "relay 1 == up",
+        "info": "",
+        "x": 300,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "9ea6773c.cf65a8",
+        "type": "comment",
+        "z": "232a99ee.3eda76",
+        "name": "relay 0 == down",
+        "info": "",
+        "x": 300,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "97572c61.40ccc",
+        "type": "exec",
+        "z": "232a99ee.3eda76",
+        "command": "relay-exp 0 0",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "relay down off",
+        "x": 1100,
+        "y": 400,
+        "wires": [
+            [
+                "ca74d5d9.21b2b"
+            ],
+            [
+                "ca74d5d9.21b2b"
+            ],
+            [
+                "16fb6e37.abae82"
+            ]
+        ]
+    },
+    {
+        "id": "9693c927.5a3e88",
+        "type": "exec",
+        "z": "232a99ee.3eda76",
+        "command": "relay-exp 1 1",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "relay up on",
+        "x": 1090,
+        "y": 200,
+        "wires": [
+            [
+                "61945ff3.24ffb"
+            ],
+            [
+                "61945ff3.24ffb"
+            ],
+            [
+                "1cf63507.d20ffb"
+            ]
+        ]
+    },
+    {
+        "id": "af6d0f33.717a68",
+        "type": "exec",
+        "z": "232a99ee.3eda76",
+        "command": "relay-exp 1 0",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "relay up off",
+        "x": 1090,
+        "y": 260,
+        "wires": [
+            [
+                "27c85fbd.d369c8"
+            ],
+            [
+                "27c85fbd.d369c8"
+            ],
+            [
+                "16fb6e37.abae82"
+            ]
+        ]
+    },
+    {
+        "id": "47374f87.1f60b8",
+        "type": "switch",
+        "z": "232a99ee.3eda76",
+        "name": "",
+        "property": "payload.direction",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "up",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "down",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 930,
+        "y": 80,
+        "wires": [
+            [
+                "9693c927.5a3e88"
+            ],
+            [
+                "b6ad17e7.c28b"
+            ]
+        ]
+    },
+    {
+        "id": "eda69e27.0aff9",
+        "type": "trigger",
+        "z": "232a99ee.3eda76",
+        "name": "",
+        "op1": "",
+        "op2": "0",
+        "op1type": "pay",
+        "op2type": "str",
+        "duration": "0",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 600,
+        "y": 80,
+        "wires": [
+            [
+                "9705ae30.ccdf1"
+            ]
+        ]
+    },
+    {
+        "id": "7344b954.2b933",
+        "type": "change",
+        "z": "232a99ee.3eda76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reset",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 20,
+        "wires": [
+            [
+                "eda69e27.0aff9"
+            ]
+        ]
+    },
+    {
+        "id": "34936ecf.18fbda",
+        "type": "link in",
+        "z": "232a99ee.3eda76",
+        "name": "",
+        "links": [
+            "ebbc2b5d.08ce58",
+            "916af1f2.03576",
+            "16fb6e37.abae82",
+            "8fe6ebf4.5ece68"
+        ],
+        "x": 395,
+        "y": 20,
+        "wires": [
+            [
+                "7344b954.2b933"
+            ]
+        ]
+    },
+    {
+        "id": "16fb6e37.abae82",
+        "type": "link out",
+        "z": "232a99ee.3eda76",
+        "name": "",
+        "links": [
+            "34936ecf.18fbda"
+        ],
+        "x": 1275,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "e4650856.16b9f",
+        "type": "ui_button",
+        "z": "35dd499b.01a916",
+        "name": "",
+        "group": "fa964865.1a966",
+        "order": 13,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Move Drill Up / Down",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "moveY",
+        "payloadType": "flow",
+        "topic": "moveY",
+        "topicType": "str",
+        "x": 380,
+        "y": 1360,
+        "wires": [
+            [
+                "416cfc79.305ccc"
+            ]
+        ]
+    },
+    {
+        "id": "a4037424.9bc938",
+        "type": "change",
+        "z": "35dd499b.01a916",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "moveY.duration",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 1420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e7ecbeb6.98f5c",
+        "type": "ui_switch",
+        "z": "35dd499b.01a916",
+        "name": "",
+        "label": "Drill direction (on = down, off = up)",
+        "tooltip": "",
+        "group": "fa964865.1a966",
+        "order": 14,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "moveYDirection",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "down",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "up",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "x": 700,
+        "y": 1480,
+        "wires": [
+            [
+                "6abff4a6.266e2c"
+            ]
+        ]
+    },
+    {
+        "id": "354aee07.ab86c2",
+        "type": "inject",
+        "z": "35dd499b.01a916",
+        "name": "down",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "down",
+        "payloadType": "str",
+        "x": 440,
+        "y": 1480,
+        "wires": [
+            [
+                "e7ecbeb6.98f5c"
+            ]
+        ]
+    },
+    {
+        "id": "6abff4a6.266e2c",
+        "type": "change",
+        "z": "35dd499b.01a916",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "moveY.direction",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 1480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "416cfc79.305ccc",
+        "type": "change",
+        "z": "35dd499b.01a916",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "moveY",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "moveY",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 1360,
+        "wires": [
+            [
+                "3c52bb7c.c393bc"
+            ]
+        ]
+    },
+    {
+        "id": "8c6f99f.7fdc568",
+        "type": "ui_text_input",
+        "z": "35dd499b.01a916",
+        "name": "Move duration",
+        "label": "Move duration",
+        "tooltip": "",
+        "group": "fa964865.1a966",
+        "order": 15,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "number",
+        "delay": "10",
+        "topic": "moveYDuration",
+        "topicType": "str",
+        "x": 580,
+        "y": 1420,
+        "wires": [
+            [
+                "49a7e93a.15c9d"
+            ]
+        ]
+    },
+    {
+        "id": "a33bcfd8.ea26c8",
+        "type": "inject",
+        "z": "35dd499b.01a916",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0.5",
+        "payloadType": "num",
+        "x": 410,
+        "y": 1420,
+        "wires": [
+            [
+                "8c6f99f.7fdc568"
+            ]
+        ]
+    },
+    {
+        "id": "d096cb23.060a8",
+        "type": "link in",
+        "z": "35dd499b.01a916",
+        "name": "",
+        "links": [
+            "62ac1b7f.c83324"
+        ],
+        "x": 735,
+        "y": 1300,
+        "wires": [
+            [
+                "3c52bb7c.c393bc"
+            ]
+        ]
+    },
+    {
+        "id": "3c52bb7c.c393bc",
+        "type": "subflow:232a99ee.3eda76",
+        "z": "35dd499b.01a916",
+        "name": "",
+        "x": 830,
+        "y": 1360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1e89c2d9.511065",
+        "type": "inject",
+        "z": "232a99ee.3eda76",
+        "name": "init",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 350,
+        "y": 600,
+        "wires": [
+            [
+                "18b0f330.d7636d"
+            ]
+        ]
+    },
+    {
+        "id": "5da96e2a.b035c",
+        "type": "switch",
+        "z": "232a99ee.3eda76",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 770,
+        "y": 200,
+        "wires": [
+            [
+                "af6d0f33.717a68"
+            ]
+        ]
+    },
+    {
+        "id": "fadfcfb8.aa5938",
+        "type": "switch",
+        "z": "232a99ee.3eda76",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 770,
+        "y": 340,
+        "wires": [
+            [
+                "97572c61.40ccc"
+            ]
+        ]
+    },
+    {
+        "id": "58071db9.3a6a6c",
+        "type": "debug",
+        "z": "232a99ee.3eda76",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c4057d9d.ac04f",
+        "type": "function",
+        "z": "35dd499b.01a916",
+        "name": "",
+        "func": "return {\n    payload: Math.max(msg.payload, 0)\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 720,
+        "y": 1060,
+        "wires": [
+            [
+                "a812ddf9.e16a1"
+            ]
+        ]
+    },
+    {
+        "id": "49a7e93a.15c9d",
+        "type": "function",
+        "z": "35dd499b.01a916",
+        "name": "",
+        "func": "return {\n    payload: Math.max(msg.payload, 0)\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 780,
+        "y": 1420,
+        "wires": [
+            [
+                "a4037424.9bc938"
+            ]
+        ]
+    },
+    {
+        "id": "1cf63507.d20ffb",
+        "type": "function",
+        "z": "232a99ee.3eda76",
+        "name": "delay for duration",
+        "func": "const { duration } = flow.get('moveY')\n\nconst timeout = duration * 1000\n\nsetTimeout(() => {\n  node.send(msg)\n  node.done()\n}, timeout)",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 790,
+        "y": 260,
+        "wires": [
+            [
+                "af6d0f33.717a68"
+            ]
+        ]
+    },
+    {
+        "id": "f731dce9.84a958",
+        "type": "function",
+        "z": "232a99ee.3eda76",
+        "name": "delay for duration",
+        "func": "const { duration } = flow.get('moveY')\n\nconst timeout = duration * 1000\n\nsetTimeout(() => {\n  node.send(msg)\n  node.done()\n}, timeout)",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 770,
+        "y": 400,
+        "wires": [
+            [
+                "97572c61.40ccc"
+            ]
+        ]
+    },
+    {
+        "id": "18b0f330.d7636d",
+        "type": "exec",
+        "z": "232a99ee.3eda76",
+        "command": "relay-exp -i",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 530,
+        "y": 600,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "61945ff3.24ffb",
+        "type": "debug",
+        "z": "232a99ee.3eda76",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1290,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "27c85fbd.d369c8",
+        "type": "debug",
+        "z": "232a99ee.3eda76",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1290,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "95881159.bd61c",
+        "type": "debug",
+        "z": "232a99ee.3eda76",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1290,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "ca74d5d9.21b2b",
+        "type": "debug",
+        "z": "232a99ee.3eda76",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1290,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "b46aca08.ba87d",
+        "type": "function",
+        "z": "232a99ee.3eda76",
+        "name": "sanitize",
+        "func": "if (typeof msg.payload !== 'object') return\nif (msg.payload.direction !== 'up' && msg.payload.direction !== 'down') return\nif (typeof msg.payload.duration !== 'number') return\n\nmsg.payload.duration = Math.max(msg.payload.duration, 0)\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 220,
+        "y": 80,
+        "wires": [
+            [
+                "fb50e8a1.0435d8"
+            ]
+        ]
+    },
+    {
+        "id": "9705ae30.ccdf1",
+        "type": "change",
+        "z": "232a99ee.3eda76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "moveY",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 80,
+        "wires": [
+            [
+                "47374f87.1f60b8"
             ]
         ]
     }
