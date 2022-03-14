@@ -54,4 +54,4 @@ The machine code expects the following files:
   - y max: gpio0
 - relay-exp [relay expansion board]: i2c
 
-![](OMEGA Onion 2 Pro pin-out details.png)
+![](https://github.com/villagekit/BeamMachine22/blob/main/OMEGA%20Onion%202%20Pro%20pin-out%20details.png)
