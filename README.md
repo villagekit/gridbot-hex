@@ -44,12 +44,14 @@ The machine code expects the following files:
 
 - side stepper motor driver
   - pulse +: gpio18
-  - pulse -: gnd
-  - dir +: gpio19
+  - pulse -: gnd 
+  - dir +: gpio19 (left is LOW, right is HIGH)t 
   - dir -: gnd
 - limit switches
-  - x min: gpio3
+  - x min (Right switch from front): gpio3
   - x max: gpio2
-  - y min: gpio0
-  - y max: gpio11
-- relay-ext: i2c
+  - y min (bottom switch): gpio11
+  - y max: gpio0
+- relay-exp [relay expansion board]: i2c
+
+![](OMEGA Onion 2 Pro pin-out details.png)
