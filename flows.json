@@ -4557,7 +4557,7 @@
         "id": "6cd7a352.6c8dfc",
         "type": "inject",
         "z": "d494211d.17046",
-        "name": "CONSTANT: calibrationDistanceXInMeters",
+        "name": "CONSTANT: pulsesPerMeter",
         "props": [
             {
                 "p": "payload"
@@ -4568,108 +4568,13 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "0.31021",
+        "payload": "80150",
         "payloadType": "num",
-        "x": 390,
+        "x": 340,
         "y": 1020,
         "wires": [
             [
-                "4c7f8a9b.a0b174"
-            ]
-        ]
-    },
-    {
-        "id": "3a65d7c3.349d3",
-        "type": "inject",
-        "z": "d494211d.17046",
-        "name": "CONSTANT: calibrationDistanceXInPulses",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "25000",
-        "payloadType": "num",
-        "x": 390,
-        "y": 1060,
-        "wires": [
-            [
-                "a6f2e934.ea20c"
-            ]
-        ]
-    },
-    {
-        "id": "1af38424.d4b0ec",
-        "type": "function",
-        "z": "d494211d.17046",
-        "name": "calculate global.pulsesPerMeter",
-        "func": "const calibrationDistanceXInPulses = global.get(\"calibrationDistanceXInPulses\")\nconst calibrationDistanceXInMeters = global.get(\"calibrationDistanceXInMeters\")\n\nconst pulsesPerMeter = calibrationDistanceXInPulses / calibrationDistanceXInMeters\n\nglobal.set(\"pulsesPerMeter\", pulsesPerMeter)",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 660,
-        "y": 1140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a6f2e934.ea20c",
-        "type": "change",
-        "z": "d494211d.17046",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "calibrationDistanceXInPulses",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 770,
-        "y": 1060,
-        "wires": [
-            [
-                "1af38424.d4b0ec"
-            ]
-        ]
-    },
-    {
-        "id": "4c7f8a9b.a0b174",
-        "type": "change",
-        "z": "d494211d.17046",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "calibrationDistanceXInMeters",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 760,
-        "y": 1020,
-        "wires": [
-            [
-                "1af38424.d4b0ec"
+                "a761d143.aa6a6"
             ]
         ]
     },
@@ -8004,6 +7909,31 @@
                 "7400b6b9.ce9e7",
                 "ddaf1fe3.142248"
             ]
+        ]
+    },
+    {
+        "id": "a761d143.aa6a6",
+        "type": "change",
+        "z": "d494211d.17046",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pulsesPerMeter",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 1020,
+        "wires": [
+            []
         ]
     }
 ]
