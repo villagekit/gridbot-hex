@@ -83,9 +83,14 @@ https://pinout.xyz/#
 - limit switches:
   - x min (right switch from front): GPIO 17
   - x max: GPIO 27
-  - y min (bottom switch): GPIO 5
-  - y max: GPIO 6
-- side motor stepper:
-  - pulse +: GPIO 23
-  - dir +: GPIO 24
-- up/down motor relay: GPIO 25
+  - y min (bottom switch): GPIO 22
+  - y max: GPIO 10
+- x motor:
+  - pulse +: GPIO 5
+  - dir +: GPIO 6
+- y motor:
+  - up relay: GPIO 23
+  - down relay: GPIO 24
+- spindle motor:
+  - speed up relay: GPIO 25
+  - speed down relay: GPIO 8
