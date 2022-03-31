@@ -1,11 +1,47 @@
 # BeamMachine22
 
-## local development
+## pi setup
 
-With Node.js > 8 installed (using `nvm`),
+[install node-red](https://nodered.org/docs/getting-started/raspberrypi)
 
 ```shell
-npm install -g node-red@1.2.9
+bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+```
+
+```shell
+sudo systemctl enable nodered.service
+```
+
+```shell
+node-red-start
+```
+
+install pigpio:
+
+```shell
+sudo apt update
+sudo apt install pigpio
+```
+
+install npm packages:
+
+```shell
+cd ~/.node-red
+npm install pigpio
+npm install onoff
+```
+
+install node-red packages
+
+- `node-red-dashboard` 
+- `node-red-contrib-loop-processing`
+
+## local development
+
+With Node.js > 12 installed (using `nvm`),
+
+```shell
+npm install -g node-red
 ```
 
 ```shell
@@ -14,7 +50,7 @@ node-red
 
 ```shell
 cd ~/.node-red
-npm install node-red-dashboard@2.28.2
+npm install node-red-dashboard
 npm install node-red-contrib-loop-processing
 ```
 
@@ -42,16 +78,14 @@ The machine code expects the following files:
 
 ### pins
 
-- side stepper motor driver
-  - pulse +: gpio18
-  - pulse -: gnd 
-  - dir +: gpio19 (left is LOW, right is HIGH)t 
-  - dir -: gnd
-- limit switches
-  - x min (Right switch from front): gpio3
-  - x max: gpio2
-  - y min (bottom switch): gpio11
-  - y max: gpio0
-- relay-exp [relay expansion board]: i2c
+https://pinout.xyz/#
 
-![](https://github.com/villagekit/BeamMachine22/blob/main/OMEGA%20Onion%202%20Pro%20pin-out%20details.png)
+- limit switches:
+  - x min (right switch from front): GPIO 17
+  - x max: GPIO 27
+  - y min (bottom switch): GPIO 5
+  - y max: GPIO 6
+- side motor stepper:
+  - pulse +: GPIO 23
+  - dir +: GPIO 24
+- up/down motor relay: GPIO 25
