@@ -21,6 +21,7 @@ install pigpio:
 ```shell
 sudo apt update
 sudo apt install pigpio
+sudo apt install onoff
 ```
 
 install npm packages:
@@ -28,7 +29,6 @@ install npm packages:
 ```shell
 cd ~/.node-red
 npm install pigpio
-npm install onoff
 ```
 
 install node-red packages
@@ -60,20 +60,17 @@ Click top right menu > Import > Select a file to import > Import "flows.json"
 
 ## notes
 
-### pulse.csv
+### scripts
 
-The machine code expects the following files:
+The machine code expects the files in `./scripts` to be in the `pi` user's home directory.
 
-`step-pulse-slow.csv`
-
-```csv
-9000,1000
+```shell
+scp -r ./scripts pi@machine:
 ```
 
-`step-pulse-fast.csv`
-
-```csv
-800,200
+```shell
+cd ./scripts
+npm install
 ```
 
 ### pins
