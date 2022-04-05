@@ -65,7 +65,12 @@ Click top right menu > Import > Select a file to import > Import "flows.json"
 The machine code expects the files in `./scripts` to be in the `pi` user's home directory.
 
 ```shell
-scp -r ./scripts pi@machine:
+cd
+mkdir scripts
+```
+
+```shell
+scp -P 14131 ./scripts/*.(js|json) pi@machine:scripts
 ```
 
 ```shell
@@ -78,10 +83,12 @@ npm install
 https://pinout.xyz/#
 
 - limit switches:
-  - x min (right switch from front): GPIO 17
-  - x max: GPIO 27
-  - y min (bottom switch): GPIO 22
-  - y max: GPIO 10
+  - gnd: Pin 9
+  - x min (right switch from front): Pin 11 / GPIO 17
+  - x max: Pin 13 / GPIO 27
+  - y min (bottom switch): Pin 15 / GPIO 22
+  - 3.3v: Pin 17
+  - y max: Pin 19 / GPIO 10
 - x motor:
   - pulse +: GPIO 5
   - dir +: GPIO 6

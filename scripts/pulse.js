@@ -1,8 +1,17 @@
-const { Gpio } = require('pigpio')
+const pigpio = require('pigpio')
+
+const { Gpio } = pigpio
 
 const args = process.argv.slice(2)
 
-const pulseCount = args[0]
+const pulseCount = Number(args[0])
+
+if (pulseCount == null || isNaN(pulseCount)) {
+  console.log('usage: node pulse.js <count>')
+  return
+}
+
+console.log(`pulse ${pulseCount}`)
 
 pigpio.initialize()
 
@@ -36,8 +45,8 @@ pigpio.waveAddGeneric(stepWaveForm)
 
 const stepWaveId = pigpio.waveCreate()
 
-const pulseCount256 = Math.floor((pulseCount - 1) / 256)
-const pulseCount1 = (pulseCount - 1) % 256
+const pulseCount256 = Math.floor(pulseCount / 256)
+const pulseCount1 = pulseCount % 256
 
 const chain = [
   255, 0, // marks the beginning of a new wave
