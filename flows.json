@@ -321,18 +321,7 @@
                 ]
             }
         ],
-        "out": [
-            {
-                "x": 1400,
-                "y": 100,
-                "wires": [
-                    {
-                        "id": "ff43e93d.f1eb28",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
+        "out": [],
         "env": [],
         "color": "#DDAA99"
     },
@@ -560,7 +549,7 @@
         "y": 380,
         "wires": [
             [
-                "366413ee.5e7e54"
+                "c74b58dbf3dc39ac"
             ]
         ]
     },
@@ -583,61 +572,7 @@
         "y": 440,
         "wires": [
             [
-                "f6a58db3.43b1b"
-            ]
-        ]
-    },
-    {
-        "id": "366413ee.5e7e54",
-        "type": "change",
-        "z": "8f0de7bc.a4daa8",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "kill",
-                "pt": "msg",
-                "to": "SIGINT",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 590,
-        "y": 380,
-        "wires": [
-            [
-                "ff237c4d.5d766"
-            ]
-        ]
-    },
-    {
-        "id": "f6a58db3.43b1b",
-        "type": "change",
-        "z": "8f0de7bc.a4daa8",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "kill",
-                "pt": "msg",
-                "to": "SIGINT",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 590,
-        "y": 440,
-        "wires": [
-            [
-                "ff237c4d.5d766"
+                "c74b58dbf3dc39ac"
             ]
         ]
     },
@@ -1086,35 +1021,10 @@
         "y": 500,
         "wires": [
             [
-                "6eea5a37.69086c"
+                "c74b58dbf3dc39ac"
             ],
-            []
-        ]
-    },
-    {
-        "id": "6eea5a37.69086c",
-        "type": "change",
-        "z": "8f0de7bc.a4daa8",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "kill",
-                "pt": "msg",
-                "to": "SIGINT",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 590,
-        "y": 500,
-        "wires": [
             [
-                "ff237c4d.5d766"
+                "c74b58dbf3dc39ac"
             ]
         ]
     },
@@ -1357,6 +1267,26 @@
         "x": 2015,
         "y": 80,
         "wires": []
+    },
+    {
+        "id": "c74b58dbf3dc39ac",
+        "type": "exec",
+        "z": "8f0de7bc.a4daa8",
+        "command": "sudo pkill --signal SIGINT -f scripts/pulse.js",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 710,
+        "y": 440,
+        "wires": [
+            [],
+            [],
+            []
+        ]
     },
     {
         "id": "ddb2baf8.535a88",
@@ -2192,11 +2122,7 @@
         "name": "",
         "x": 550,
         "y": 180,
-        "wires": [
-            [
-                "51b5ec9a.4d2874"
-            ]
-        ]
+        "wires": []
     },
     {
         "id": "95161f7.f31b36",
@@ -2665,9 +2591,11 @@
                 "b46aca08.ba87d"
             ],
             [
+                "fadfcfb8.aa5938",
                 "5da96e2a.b035c"
             ],
             [
+                "5da96e2a.b035c",
                 "fadfcfb8.aa5938"
             ]
         ]
@@ -2677,11 +2605,12 @@
         "type": "function",
         "z": "232a99ee.3eda76",
         "name": "ensure safety",
-        "func": "const { direction } = msg.payload\n\n// if machine stop or error, don't move\nif (\n  global.get(\"status\") === \"stop\"\n  || global.get(\"status\") === \"error\"\n) {\n  return [null, msg]\n}\n\n// if limit switches set, don't move further towards them\nif (\n  (direction === \"up\" && global.get(\"limitYMin\"))\n  || (direction === \"down\" && global.get(\"limitYMax\"))\n) {\n  return [null, msg]\n}\n\nreturn [msg, null]",
+        "func": "const { direction } = msg.payload\n\n// if machine stop or error, don't move\nif (\n  global.get(\"status\") === \"stop\"\n  || global.get(\"status\") === \"error\"\n) {\n  return [null, msg]\n}\n\n// if limit switches set, don't move further towards them\nif (\n  (direction === \"up\" && global.get(\"limitYMax\"))\n  || (direction === \"down\" && global.get(\"limitYMin\"))\n) {\n  return [null, msg]\n}\n\nreturn [msg, null]",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
+        "libs": [],
         "x": 340,
         "y": 260,
         "wires": [
@@ -2971,9 +2900,9 @@
         "id": "bb9ac12b.bca65",
         "type": "comment",
         "z": "232a99ee.3eda76",
-        "name": "y min == top",
+        "name": "y min == bottom",
         "info": "",
-        "x": 280,
+        "x": 290,
         "y": 540,
         "wires": []
     },
@@ -2981,9 +2910,9 @@
         "id": "2c07762f.a5cc7a",
         "type": "comment",
         "z": "232a99ee.3eda76",
-        "name": "y max == bottom",
+        "name": "y max == top",
         "info": "",
-        "x": 280,
+        "x": 270,
         "y": 580,
         "wires": []
     },
@@ -3007,7 +2936,8 @@
         "y": 820,
         "wires": [
             [
-                "b1e6c5c8.555e3"
+                "b1e6c5c8.555e3",
+                "0a3c31ebe15055db"
             ]
         ]
     },
@@ -3673,11 +3603,27 @@
         "wires": []
     },
     {
+        "id": "0a3c31ebe15055db",
+        "type": "debug",
+        "z": "232a99ee.3eda76",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1390,
+        "y": 880,
+        "wires": []
+    },
+    {
         "id": "dbbcfdef.a2932",
         "type": "while-loop",
         "z": "dffac542.33f98",
         "name": "",
-        "condi": "global.get(\"limitYMin\") === false ",
+        "condi": "global.get(\"limitYMax\") === false ",
         "limit": false,
         "limitTime": 10000,
         "time": "wla191c67d91a57",
@@ -3686,43 +3632,11 @@
         "y": 100,
         "wires": [
             [
-                "be4af23b.3a8f48"
+                "ba62394d61bde536"
             ],
             [
                 "1e83e7a1.2c9a2"
             ]
-        ]
-    },
-    {
-        "id": "ff43e93d.f1eb28",
-        "type": "change",
-        "z": "dffac542.33f98",
-        "name": "set globals",
-        "rules": [
-            {
-                "t": "set",
-                "p": "positionYInDuration",
-                "pt": "global",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "hasHomeY",
-                "pt": "global",
-                "to": "true",
-                "tot": "bool"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1270,
-        "y": 100,
-        "wires": [
-            []
         ]
     },
     {
@@ -3744,29 +3658,15 @@
         ]
     },
     {
-        "id": "be4af23b.3a8f48",
-        "type": "function",
-        "z": "dffac542.33f98",
-        "name": "",
-        "func": "return {\n  topic: \"moveY\",\n  payload: {\n    direction: \"down\",\n    duration: 0.5\n  }      \n}",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 900,
-        "y": 100,
-        "wires": [
-            [
-                "bc80d83c.531c2"
-            ]
-        ]
-    },
-    {
         "id": "4db5916d.28f8f8",
         "type": "link out",
         "z": "dffac542.33f98",
         "name": "",
-        "links": [],
+        "mode": "link",
+        "links": [
+            "aed0602e.8b7a3",
+            "bb5bd657fcd3d8cd"
+        ],
         "x": 115,
         "y": 160,
         "wires": []
@@ -3776,26 +3676,14 @@
         "type": "link in",
         "z": "dffac542.33f98",
         "name": "",
-        "links": [],
+        "links": [
+            "4db5916d.28f8f8"
+        ],
         "x": 495,
         "y": 260,
         "wires": [
             [
                 "a34c816d.fd7dd"
-            ]
-        ]
-    },
-    {
-        "id": "26add625.535c92",
-        "type": "link in",
-        "z": "dffac542.33f98",
-        "name": "",
-        "links": [],
-        "x": 995,
-        "y": 140,
-        "wires": [
-            [
-                "bc80d83c.531c2"
             ]
         ]
     },
@@ -3916,19 +3804,6 @@
         ]
     },
     {
-        "id": "bc80d83c.531c2",
-        "type": "subflow:232a99ee.3eda76",
-        "z": "dffac542.33f98",
-        "name": "",
-        "x": 1100,
-        "y": 100,
-        "wires": [
-            [
-                "ff43e93d.f1eb28"
-            ]
-        ]
-    },
-    {
         "id": "e3419f3f.a60f1",
         "type": "debug",
         "z": "dffac542.33f98",
@@ -3943,6 +3818,120 @@
         "statusType": "auto",
         "x": 300,
         "y": 40,
+        "wires": []
+    },
+    {
+        "id": "181d06fdc500179f",
+        "type": "change",
+        "z": "dffac542.33f98",
+        "name": "set globals",
+        "rules": [
+            {
+                "t": "set",
+                "p": "positionYInDuration",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "hasHomeY",
+                "pt": "global",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1550,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ef8f7b4dce7f570e",
+        "type": "function",
+        "z": "dffac542.33f98",
+        "name": "",
+        "func": "return {\n  topic: \"moveY\",\n  payload: {\n    direction: \"down\",\n    duration: 0.5\n  }      \n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1180,
+        "y": 100,
+        "wires": [
+            [
+                "b651df02c9304eac"
+            ]
+        ]
+    },
+    {
+        "id": "bb5bd657fcd3d8cd",
+        "type": "link in",
+        "z": "dffac542.33f98",
+        "name": "",
+        "links": [
+            "4db5916d.28f8f8"
+        ],
+        "x": 1275,
+        "y": 140,
+        "wires": [
+            [
+                "b651df02c9304eac"
+            ]
+        ]
+    },
+    {
+        "id": "b651df02c9304eac",
+        "type": "subflow:232a99ee.3eda76",
+        "z": "dffac542.33f98",
+        "name": "",
+        "x": 1380,
+        "y": 100,
+        "wires": [
+            [
+                "181d06fdc500179f"
+            ]
+        ]
+    },
+    {
+        "id": "ba62394d61bde536",
+        "type": "delay",
+        "z": "dffac542.33f98",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 960,
+        "y": 100,
+        "wires": [
+            [
+                "ef8f7b4dce7f570e"
+            ]
+        ]
+    },
+    {
+        "id": "f197c8eb269e4eab",
+        "type": "comment",
+        "z": "dffac542.33f98",
+        "name": "HACK: allow time for Move Y to reset",
+        "info": "",
+        "x": 970,
+        "y": 60,
         "wires": []
     },
     {
@@ -7443,11 +7432,7 @@
         "name": "",
         "x": 610,
         "y": 220,
-        "wires": [
-            [
-                "748b3664.7a2908"
-            ]
-        ]
+        "wires": []
     },
     {
         "id": "9c6b56bf.58f038",
