@@ -13,13 +13,13 @@ if (pulseCount == null || isNaN(pulseCount)) {
 
 console.log(`pulse ${pulseCount}`)
 
-pigpio.initialize()
+let isKilled = false
 
+pigpio.initialize()
 process.on('SIGINT', () => {
-  if (pigpio.waveTxBusy()) {
-    pigpio.waveTxStop()
-  }
   pigpio.terminate()
+
+  isKilled = true
 })
 
 const outPin = 5
@@ -56,6 +56,15 @@ const chain = [
 
 pigpio.waveChain(chain)
 
-while (pigpio.waveTxBusy()) {}
+function tick () {
+  if (isKilled) return
 
-pigpio.waveDelete(stepWaveId)
+  if (pigpio.waveTxBusy()) {
+    setTimeout(tick, 0)
+    return
+  }
+
+  pigpio.waveDelete(stepWaveId)
+}
+
+setTimeout(tick, 0)
