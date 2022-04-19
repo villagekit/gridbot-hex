@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@villagekit/stepper-ramp": "^1.0.1",
     "pigpio": "^3.3.1"
   }
 }
