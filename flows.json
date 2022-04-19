@@ -530,7 +530,7 @@
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 940,
+        "x": 920,
         "y": 220,
         "wires": [
             [],
@@ -651,7 +651,7 @@
         "id": "475e9345.d230dc",
         "type": "change",
         "z": "8f0de7bc.a4daa8",
-        "name": "set msg.payload = flow.pulse.count",
+        "name": "set msg.payload = flow.pulse",
         "rules": [
             {
                 "t": "set",
@@ -666,7 +666,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 380,
+        "x": 360,
         "y": 220,
         "wires": [
             [
@@ -925,9 +925,9 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "{{payload.count}}",
+        "template": "{{payload.count}} {{payload.speed}}",
         "output": "str",
-        "x": 660,
+        "x": 640,
         "y": 220,
         "wires": [
             [
@@ -2093,7 +2093,7 @@
         "z": "289569eb.ed7136",
         "name": "",
         "counter": "il51b5ec9a4d2874",
-        "counterType": "msg",
+        "counterType": "flow",
         "reset": false,
         "resetValue": "value-null",
         "initial": 0,
@@ -2108,7 +2108,7 @@
         "wires": [
             [],
             [
-                "f6d02105.9c537"
+                "eea59ba1afb11caa"
             ]
         ]
     },
@@ -2134,37 +2134,6 @@
         "x": 550,
         "y": 260,
         "wires": [
-            [
-                "51b5ec9a.4d2874"
-            ]
-        ]
-    },
-    {
-        "id": "95161f7.f31b36",
-        "type": "switch",
-        "z": "289569eb.ed7136",
-        "name": "",
-        "property": "il51b5ec9a4d2874",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "lt",
-                "v": "global.get(\"numberOfStepsPerCycle\") - 2",
-                "vt": "jsonata"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 550,
-        "y": 560,
-        "wires": [
-            [
-                "47a70b48.76f82c"
-            ],
             [
                 "51b5ec9a.4d2874"
             ]
@@ -2210,11 +2179,11 @@
         "z": "289569eb.ed7136",
         "name": "",
         "env": [],
-        "x": 680,
+        "x": 520,
         "y": 460,
         "wires": [
             [
-                "96bcfafc.a6f478"
+                "236e8eef9f5dcb2e"
             ]
         ]
     },
@@ -2228,7 +2197,7 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 480,
+        "x": 320,
         "y": 460,
         "wires": [
             [
@@ -2242,11 +2211,11 @@
         "z": "289569eb.ed7136",
         "name": "",
         "env": [],
-        "x": 1060,
+        "x": 1260,
         "y": 460,
         "wires": [
             [
-                "95161f7.f31b36"
+                "7d4c829604db1d24"
             ]
         ]
     },
@@ -2260,7 +2229,7 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 860,
+        "x": 1060,
         "y": 460,
         "wires": [
             [
@@ -2416,7 +2385,7 @@
         "z": "289569eb.ed7136",
         "name": "",
         "links": [],
-        "x": 585,
+        "x": 425,
         "y": 420,
         "wires": [
             [
@@ -2430,7 +2399,7 @@
         "z": "289569eb.ed7136",
         "name": "",
         "links": [],
-        "x": 965,
+        "x": 1165,
         "y": 420,
         "wires": [
             [
@@ -2449,6 +2418,78 @@
         "wires": [
             [
                 "fb30550b.60f5c8"
+            ]
+        ]
+    },
+    {
+        "id": "236e8eef9f5dcb2e",
+        "type": "delay",
+        "z": "289569eb.ed7136",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 800,
+        "y": 460,
+        "wires": [
+            [
+                "96bcfafc.a6f478"
+            ]
+        ]
+    },
+    {
+        "id": "eea59ba1afb11caa",
+        "type": "delay",
+        "z": "289569eb.ed7136",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 120,
+        "y": 460,
+        "wires": [
+            [
+                "f6d02105.9c537"
+            ]
+        ]
+    },
+    {
+        "id": "7d4c829604db1d24",
+        "type": "function",
+        "z": "289569eb.ed7136",
+        "name": "",
+        "func": "if (flow.get(\"il51b5ec9a4d2874\") < global.get(\"numberOfStepsPerCycle\") - 1) {\n  return [msg, null]\n} else {\n  return [null, msg]\n}",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 560,
+        "wires": [
+            [
+                "47a70b48.76f82c"
+            ],
+            [
+                "51b5ec9a.4d2874"
             ]
         ]
     },
