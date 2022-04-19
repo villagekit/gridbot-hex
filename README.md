@@ -35,6 +35,7 @@ install node-red packages
 
 - `node-red-dashboard` 
 - `node-red-contrib-loop-processing`
+- `node-red-simple-gate`
 
 ## local development
 
