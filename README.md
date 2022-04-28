@@ -97,5 +97,5 @@ https://pinout.xyz/#
   - up relay: GPIO 23
   - down relay: GPIO 24
 - spindle motor:
-  - speed up relay: GPIO 25
-  - speed down relay: GPIO 8
+  - speed up relay: GPIO 8
+  - speed down relay: GPIO 25
