@@ -36,6 +36,7 @@ install node-red packages
 - `node-red-dashboard` 
 - `node-red-contrib-loop-processing`
 - `node-red-simple-gate`
+- `node-red-contrib-countdown`
 
 ## local development
 
@@ -99,3 +100,4 @@ https://pinout.xyz/#
 - spindle motor:
   - speed up relay: GPIO 8
   - speed down relay: GPIO 25
+  - speed off: GPIO 7
