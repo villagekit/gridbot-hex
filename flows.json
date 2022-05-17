@@ -2932,8 +2932,8 @@
         "y": 280,
         "wires": [
             [
-                "9705ae30.ccdf1",
-                "b4d542da.2de32"
+                "b4d542da.2de32",
+                "9705ae30.ccdf1"
             ]
         ]
     },
@@ -3046,6 +3046,7 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
+        "libs": [],
         "x": 200,
         "y": 340,
         "wires": [
@@ -3073,7 +3074,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 760,
+        "x": 720,
         "y": 340,
         "wires": [
             [
@@ -3956,8 +3957,8 @@
         "payloadTimerStartType": "nul",
         "payloadTimerStop": "true",
         "payloadTimerStopType": "bool",
-        "timer": "0",
-        "resetWhileRunning": true,
+        "timer": "1",
+        "resetWhileRunning": false,
         "setTimeToNewWhileRunning": true,
         "startCountdownOnControlMessage": true,
         "x": 1110,
@@ -4013,8 +4014,8 @@
         "payloadTimerStartType": "nul",
         "payloadTimerStop": "true",
         "payloadTimerStopType": "bool",
-        "timer": "0",
-        "resetWhileRunning": true,
+        "timer": "1",
+        "resetWhileRunning": false,
         "setTimeToNewWhileRunning": true,
         "startCountdownOnControlMessage": true,
         "x": 1110,
@@ -4120,11 +4121,12 @@
         "type": "function",
         "z": "dffac542.33f98",
         "name": "",
-        "func": "return {\n  topic: \"moveY\",\n  payload: {\n    direction: \"up\",\n    duration: 2\n  }      \n}",
+        "func": "return {\n  topic: \"moveY\",\n  payload: {\n    direction: \"up\",\n    duration: 1\n  }      \n}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
+        "libs": [],
         "x": 420,
         "y": 200,
         "wires": [
@@ -7912,7 +7914,7 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "5",
+        "payload": "10",
         "payloadType": "num",
         "x": 290,
         "y": 620,
@@ -8980,7 +8982,7 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "0.5",
+        "payload": "1",
         "payloadType": "num",
         "x": 270,
         "y": 1200,
