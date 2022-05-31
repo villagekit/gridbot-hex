@@ -36,7 +36,7 @@ install node-red packages
 - `node-red-dashboard` 
 - `node-red-contrib-loop-processing`
 - `node-red-simple-gate`
-- `node-red-contrib-countdown`
+- `git:villagekit/node-red-contrib-countdown`
 
 ## local development
 
@@ -54,6 +54,8 @@ node-red
 cd ~/.node-red
 npm install node-red-dashboard
 npm install node-red-contrib-loop-processing
+npm install node-red-simple-gate
+npm install git:villagekit/node-red-contrib-countdown
 ```
 
 Open http://localhost:1880
