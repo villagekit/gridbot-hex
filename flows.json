@@ -331,7 +331,7 @@
         ],
         "out": [
             {
-                "x": 2160,
+                "x": 1960,
                 "y": 100,
                 "wires": [
                     {
@@ -3308,8 +3308,7 @@
         "y": 460,
         "wires": [
             [
-                "0a2a5abed54103b6",
-                "f9dc62b6a0c8564e"
+                "0a2a5abed54103b6"
             ]
         ]
     },
@@ -3332,8 +3331,7 @@
         "y": 740,
         "wires": [
             [
-                "09e754afbce8b036",
-                "1e24e31f3c1dc07f"
+                "09e754afbce8b036"
             ]
         ]
     },
@@ -3342,7 +3340,7 @@
         "type": "function",
         "z": "232a99ee.3eda76",
         "name": "sanitize",
-        "func": "if (typeof msg.payload !== 'object') return\nif (msg.payload.direction !== 'up' && msg.payload.direction !== 'down') return\nif (typeof msg.payload.duration !== 'number') return\n\nmsg.payload.duration = Math.max(msg.payload.duration, 0)\n\nreturn msg",
+        "func": "if (typeof msg.payload !== 'object') return\nif (msg.payload.direction !== 'up' && msg.payload.direction !== 'down') return\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3744,8 +3742,7 @@
         "y": 340,
         "wires": [
             [
-                "c0396517071a8910",
-                "949d305c317d4fef"
+                "c0396517071a8910"
             ]
         ]
     },
@@ -3795,8 +3792,7 @@
         "y": 580,
         "wires": [
             [
-                "f7dc28a974101bd1",
-                "e3716354079c43d7"
+                "f7dc28a974101bd1"
             ]
         ]
     },
@@ -4080,12 +4076,10 @@
         "y": 500,
         "wires": [
             [
-                "0a2a5abed54103b6",
-                "f9dc62b6a0c8564e"
+                "0a2a5abed54103b6"
             ],
             [
-                "0a2a5abed54103b6",
-                "f9dc62b6a0c8564e"
+                "0a2a5abed54103b6"
             ]
         ]
     },
@@ -4115,253 +4109,10 @@
         "y": 780,
         "wires": [
             [
-                "09e754afbce8b036",
-                "1e24e31f3c1dc07f"
+                "09e754afbce8b036"
             ],
             [
-                "09e754afbce8b036",
-                "1e24e31f3c1dc07f"
-            ]
-        ]
-    },
-    {
-        "id": "949d305c317d4fef",
-        "type": "change",
-        "z": "232a99ee.3eda76",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "control",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "moveY.duration",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 920,
-        "y": 400,
-        "wires": [
-            [
-                "6841c7053d772d14",
-                "0bf4445b972411d6"
-            ]
-        ]
-    },
-    {
-        "id": "6841c7053d772d14",
-        "type": "countdown",
-        "z": "232a99ee.3eda76",
-        "name": "",
-        "topic": "",
-        "payloadTimerStart": "",
-        "payloadTimerStartType": "nul",
-        "payloadTimerStop": "true",
-        "payloadTimerStopType": "bool",
-        "timer": "1",
-        "resetWhileRunning": false,
-        "setTimeToNewWhileRunning": true,
-        "startCountdownOnControlMessage": true,
-        "x": 1110,
-        "y": 400,
-        "wires": [
-            [
-                "0a2a5abed54103b6",
-                "8a3b5bda96027c5a"
-            ],
-            [
-                "1f631accbc910628"
-            ]
-        ]
-    },
-    {
-        "id": "e3716354079c43d7",
-        "type": "change",
-        "z": "232a99ee.3eda76",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "control",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "moveY.duration",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 920,
-        "y": 680,
-        "wires": [
-            [
-                "8adaae9cbff0a28a",
-                "0bf4445b972411d6"
-            ]
-        ]
-    },
-    {
-        "id": "8adaae9cbff0a28a",
-        "type": "countdown",
-        "z": "232a99ee.3eda76",
-        "name": "",
-        "topic": "",
-        "payloadTimerStart": "",
-        "payloadTimerStartType": "nul",
-        "payloadTimerStop": "true",
-        "payloadTimerStopType": "bool",
-        "timer": "1",
-        "resetWhileRunning": false,
-        "setTimeToNewWhileRunning": true,
-        "startCountdownOnControlMessage": true,
-        "x": 1110,
-        "y": 680,
-        "wires": [
-            [
-                "09e754afbce8b036",
-                "d3e90256eb170a91"
-            ],
-            [
-                "1f631accbc910628"
-            ]
-        ]
-    },
-    {
-        "id": "f9dc62b6a0c8564e",
-        "type": "change",
-        "z": "232a99ee.3eda76",
-        "name": "",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "topic",
-                "pt": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "false",
-                "tot": "bool"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 920,
-        "y": 440,
-        "wires": [
-            [
-                "6841c7053d772d14",
-                "0bf4445b972411d6"
-            ]
-        ]
-    },
-    {
-        "id": "eb85364d4e597c54",
-        "type": "debug",
-        "z": "232a99ee.3eda76",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1510,
-        "y": 660,
-        "wires": []
-    },
-    {
-        "id": "d3e90256eb170a91",
-        "type": "change",
-        "z": "232a99ee.3eda76",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "countdown end",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1320,
-        "y": 660,
-        "wires": [
-            [
-                "eb85364d4e597c54"
-            ]
-        ]
-    },
-    {
-        "id": "0909527938470964",
-        "type": "debug",
-        "z": "232a99ee.3eda76",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1510,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "8a3b5bda96027c5a",
-        "type": "change",
-        "z": "232a99ee.3eda76",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "countdown end",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1320,
-        "y": 400,
-        "wires": [
-            [
-                "0909527938470964"
+                "09e754afbce8b036"
             ]
         ]
     },
@@ -4432,114 +4183,18 @@
         ]
     },
     {
-        "id": "1e24e31f3c1dc07f",
-        "type": "change",
-        "z": "232a99ee.3eda76",
-        "name": "",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "topic",
-                "pt": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "false",
-                "tot": "bool"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 920,
-        "y": 720,
-        "wires": [
-            [
-                "8adaae9cbff0a28a",
-                "0bf4445b972411d6"
-            ]
-        ]
-    },
-    {
-        "id": "0bf4445b972411d6",
-        "type": "debug",
-        "z": "232a99ee.3eda76",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1090,
-        "y": 600,
-        "wires": []
-    },
-    {
-        "id": "1f631accbc910628",
-        "type": "change",
-        "z": "232a99ee.3eda76",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "moveYCountdownTimeRemaining",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1410,
-        "y": 980,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "dbbcfdef.a2932",
-        "type": "while-loop",
-        "z": "dffac542.33f98",
-        "name": "",
-        "condi": "global.get(\"limitYMax\") === false ",
-        "limit": false,
-        "limitTime": 10000,
-        "time": "wla191c67d91a57",
-        "timeType": "msg",
-        "x": 630,
-        "y": 100,
-        "wires": [
-            [
-                "6cf889cef0ed6e4f"
-            ],
-            [
-                "1e83e7a1.2c9a2"
-            ]
-        ]
-    },
-    {
         "id": "1e83e7a1.2c9a2",
         "type": "function",
         "z": "dffac542.33f98",
         "name": "",
-        "func": "return {\n  topic: \"moveY\",\n  payload: {\n    direction: \"up\",\n    duration: 1\n  }      \n}",
+        "func": "return {\n  topic: \"moveY\",\n  payload: {\n    direction: \"up\",\n  }      \n}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
-        "y": 200,
+        "x": 660,
+        "y": 100,
         "wires": [
             [
                 "a34c816d.fd7dd"
@@ -4568,8 +4223,8 @@
         "links": [
             "4db5916d.28f8f8"
         ],
-        "x": 495,
-        "y": 260,
+        "x": 695,
+        "y": 160,
         "wires": [
             [
                 "a34c816d.fd7dd"
@@ -4675,7 +4330,7 @@
         "y": 100,
         "wires": [
             [
-                "dbbcfdef.a2932"
+                "1e83e7a1.2c9a2"
             ]
         ]
     },
@@ -4684,11 +4339,11 @@
         "type": "subflow:232a99ee.3eda76",
         "z": "dffac542.33f98",
         "name": "",
-        "x": 620,
-        "y": 200,
+        "x": 840,
+        "y": 100,
         "wires": [
             [
-                "dbbcfdef.a2932"
+                "6cf889cef0ed6e4f"
             ]
         ]
     },
@@ -4717,13 +4372,6 @@
         "rules": [
             {
                 "t": "set",
-                "p": "positionYInDuration",
-                "pt": "global",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
                 "p": "hasHomeY",
                 "pt": "global",
                 "to": "true",
@@ -4735,84 +4383,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1830,
+        "x": 1630,
         "y": 100,
         "wires": [
             [
                 "8475f980b7852c6f"
-            ]
-        ]
-    },
-    {
-        "id": "ef8f7b4dce7f570e",
-        "type": "function",
-        "z": "dffac542.33f98",
-        "name": "",
-        "func": "return {\n  topic: \"moveY\",\n  payload: {\n    direction: \"down\",\n    duration: 1\n  }      \n}",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1460,
-        "y": 100,
-        "wires": [
-            [
-                "b651df02c9304eac"
-            ]
-        ]
-    },
-    {
-        "id": "bb5bd657fcd3d8cd",
-        "type": "link in",
-        "z": "dffac542.33f98",
-        "name": "",
-        "links": [
-            "4db5916d.28f8f8"
-        ],
-        "x": 1565,
-        "y": 160,
-        "wires": [
-            [
-                "b651df02c9304eac"
-            ]
-        ]
-    },
-    {
-        "id": "b651df02c9304eac",
-        "type": "subflow:232a99ee.3eda76",
-        "z": "dffac542.33f98",
-        "name": "",
-        "x": 1660,
-        "y": 100,
-        "wires": [
-            [
-                "181d06fdc500179f"
-            ]
-        ]
-    },
-    {
-        "id": "ba62394d61bde536",
-        "type": "delay",
-        "z": "dffac542.33f98",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "0.5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1250,
-        "y": 100,
-        "wires": [
-            [
-                "ef8f7b4dce7f570e"
             ]
         ]
     },
@@ -4845,11 +4420,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 970,
+        "x": 1250,
         "y": 100,
         "wires": [
             [
-                "ba62394d61bde536"
+                "181d06fdc500179f"
             ]
         ]
     },
@@ -4865,7 +4440,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2210,
+        "x": 2010,
         "y": 160,
         "wires": []
     },
@@ -4888,7 +4463,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 2020,
+        "x": 1820,
         "y": 160,
         "wires": [
             [
@@ -5736,11 +5311,12 @@
         "type": "function",
         "z": "4230a38c8da33e3a",
         "name": "move down msg",
-        "func": "return {\n  topic: \"moveY\",\n  payload: {\n    direction: \"down\",\n    duration: global.get(\"maxDistanceYInDuration\")\n  }\n}",
+        "func": "return {\n  topic: \"moveY\",\n  payload: {\n    direction: \"down\",\n  }\n}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
+        "libs": [],
         "x": 640,
         "y": 80,
         "wires": [
@@ -5768,11 +5344,12 @@
         "type": "function",
         "z": "4230a38c8da33e3a",
         "name": "move up msg",
-        "func": "return {\n  topic: \"moveY\",\n  payload: {\n    direction: \"up\",\n    duration: global.get(\"maxDistanceYInDuration\")\n  }\n}",
+        "func": "return {\n  topic: \"moveY\",\n  payload: {\n    direction: \"up\",\n  }\n}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
+        "libs": [],
         "x": 640,
         "y": 220,
         "wires": [
@@ -8628,119 +8205,6 @@
         "wires": []
     },
     {
-        "id": "ca3381f6a15850c4",
-        "type": "ui_text_input",
-        "z": "d494211d.17046",
-        "name": "Max distance Y in duration",
-        "label": "Max distance Y in duration",
-        "tooltip": "",
-        "group": "91c2e7e9.4deab8",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "mode": "number",
-        "delay": "10",
-        "topic": "topic",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "msg",
-        "x": 600,
-        "y": 620,
-        "wires": [
-            [
-                "982522898bf7634f"
-            ]
-        ]
-    },
-    {
-        "id": "982522898bf7634f",
-        "type": "function",
-        "z": "d494211d.17046",
-        "name": "",
-        "func": "return {\n    payload: Math.max(msg.payload, 1)\n};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 820,
-        "y": 620,
-        "wires": [
-            [
-                "9e38f67980e836b3",
-                "01c93d49bcf2aedc"
-            ]
-        ]
-    },
-    {
-        "id": "7c515f8ea4096432",
-        "type": "inject",
-        "z": "d494211d.17046",
-        "name": "CONSTANT: maxDistanceYInDuration",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "25",
-        "payloadType": "num",
-        "x": 290,
-        "y": 620,
-        "wires": [
-            [
-                "ca3381f6a15850c4"
-            ]
-        ]
-    },
-    {
-        "id": "9e38f67980e836b3",
-        "type": "change",
-        "z": "d494211d.17046",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "maxDistanceYInDuration",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1060,
-        "y": 680,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "01c93d49bcf2aedc",
-        "type": "ui_text",
-        "z": "d494211d.17046",
-        "group": "9701fa46.351088",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "name": "Max distance Y in duration",
-        "label": "Max distance Y in duration",
-        "format": "{{msg.payload}}",
-        "layout": "col-center",
-        "className": "",
-        "x": 1040,
-        "y": 620,
-        "wires": []
-    },
-    {
         "id": "259e64b852bea004",
         "type": "inject",
         "z": "d494211d.17046",
@@ -8822,48 +8286,6 @@
         "className": "",
         "x": 560,
         "y": 1120,
-        "wires": []
-    },
-    {
-        "id": "9a90ba34b57cb4fd",
-        "type": "inject",
-        "z": "d494211d.17046",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "1",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "moveYCountdownTimeRemaining",
-        "payloadType": "global",
-        "x": 320,
-        "y": 1180,
-        "wires": [
-            [
-                "580bfe6647c43b62"
-            ]
-        ]
-    },
-    {
-        "id": "580bfe6647c43b62",
-        "type": "ui_text",
-        "z": "d494211d.17046",
-        "group": "fa964865.1a966",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Move Y Countdown Time Remaining",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 710,
-        "y": 1180,
         "wires": []
     },
     {
@@ -9659,31 +9081,6 @@
         ]
     },
     {
-        "id": "a4037424.9bc938",
-        "type": "change",
-        "z": "35dd499b.01a916",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "moveY.duration",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 870,
-        "y": 1200,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "e7ecbeb6.98f5c",
         "type": "ui_switch",
         "z": "35dd499b.01a916",
@@ -9709,7 +9106,7 @@
         "offcolor": "",
         "animate": false,
         "x": 550,
-        "y": 1260,
+        "y": 1220,
         "wires": [
             [
                 "6abff4a6.266e2c"
@@ -9734,7 +9131,7 @@
         "payload": "down",
         "payloadType": "str",
         "x": 300,
-        "y": 1260,
+        "y": 1220,
         "wires": [
             [
                 "e7ecbeb6.98f5c"
@@ -9761,7 +9158,7 @@
         "to": "",
         "reg": false,
         "x": 870,
-        "y": 1260,
+        "y": 1220,
         "wires": [
             []
         ]
@@ -9798,55 +9195,6 @@
             [
                 "3c52bb7c.c393bc",
                 "c98a4f80.b63428"
-            ]
-        ]
-    },
-    {
-        "id": "8c6f99f.7fdc568",
-        "type": "ui_text_input",
-        "z": "35dd499b.01a916",
-        "name": "Move duration",
-        "label": "Move duration",
-        "tooltip": "",
-        "group": "dc7dab5f.c3f838",
-        "order": 8,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "mode": "number",
-        "delay": "10",
-        "topic": "moveYDuration",
-        "topicType": "str",
-        "x": 440,
-        "y": 1200,
-        "wires": [
-            [
-                "49a7e93a.15c9d"
-            ]
-        ]
-    },
-    {
-        "id": "a33bcfd8.ea26c8",
-        "type": "inject",
-        "z": "35dd499b.01a916",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "1",
-        "payloadType": "num",
-        "x": 270,
-        "y": 1200,
-        "wires": [
-            [
-                "8c6f99f.7fdc568"
             ]
         ]
     },
@@ -9894,24 +9242,6 @@
         "wires": [
             [
                 "a812ddf9.e16a1"
-            ]
-        ]
-    },
-    {
-        "id": "49a7e93a.15c9d",
-        "type": "function",
-        "z": "35dd499b.01a916",
-        "name": "",
-        "func": "return {\n    payload: Math.max(msg.payload, 0)\n}",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 640,
-        "y": 1200,
-        "wires": [
-            [
-                "a4037424.9bc938"
             ]
         ]
     },
